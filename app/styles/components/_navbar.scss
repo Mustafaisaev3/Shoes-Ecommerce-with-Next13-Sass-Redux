@@ -1,9 +1,10 @@
 
-
 .navbar {
     background: $bg-secondary;
     width: 100%;
     height: 80px;
+    position: fixed;
+    // box-shadow: $shadow-md;
 
     &__inner {
         display: flex;

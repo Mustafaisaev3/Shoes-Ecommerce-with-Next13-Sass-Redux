@@ -8,7 +8,7 @@ interface SearchProps {
 }
 
 const Search: React.FC<SearchProps> = () => {
-  const [searchValue, setSearchValue] = useState()
+  const [searchValue, setSearchValue] = useState('')
 
   const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
     setSearchValue(e.currentTarget.value)

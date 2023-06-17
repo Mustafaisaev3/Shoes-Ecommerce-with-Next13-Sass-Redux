@@ -1,0 +1,115 @@
+.hero {
+    width: 100%;
+    // height: 100vh;
+    height: 751px;
+    padding: 80px 0;
+
+    &__slider {
+        width: $full;
+        height: 100%;
+        display: flex;
+        padding-top: 100px;
+
+        &-tabs {
+            width: 150px;
+            height: $full;
+        }
+    }
+}
+
+.slider-tabs {
+    
+    &__inner {
+        width: $full;
+        border-left: 1px solid $color-main;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__item {
+        width: $full;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: $text-lg;
+        cursor: pointer;
+        transition: all 0.2s;
+
+        &:hover {
+            background: $bg-secondary;
+        }
+    }
+
+    &__item.active {
+        font-size: $text-2xl;
+        font-weight: 600;
+        border-left: 2px solid $color-main;
+    }
+}
+
+.hero__slider-content {
+    width: $full;
+    height: $full;
+    display: flex;
+    padding: 0 30px;
+}
+
+.slider-content {
+    // width: 100%;
+    position: relative;
+
+    &__text {
+        width: 60%;
+        height: $full; 
+        display: flex;
+        flex-direction: column;
+        gap: $gap-30;
+    }
+
+    &__title {
+        font-size: $text-6xl;
+        font-weight: 700;
+    }
+
+    &__description {
+        font-size: $text-lg;
+        color: gray;
+    }
+
+    &__btns {
+        display: flex; 
+        align-items: center;
+        gap: $gap-20;
+        
+        & > button {
+            width: 200px;
+        }
+
+    }
+
+    &__price {
+        font-size: $text-2xl;
+        font-weight: 600;
+    }
+
+    &__image {
+        width: 100%;
+        height: 100%;
+        border-radius: $rounded-full;
+        background: $bg-main;
+        // overflow: hidden;
+        
+        & > img {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: auto;
+            object-fit: cover;
+            transition: all 1s;
+            transform: rotate(-30deg) translateX(-150px) translateY(-100px);
+        }
+    }
+}
