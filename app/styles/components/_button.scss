@@ -1,0 +1,52 @@
+.btn {
+    width: auto;
+    height: auto;
+    padding: 10px;
+    background: $btn_bg_main;
+    color: white;
+    border: 2px solid $color-main;
+    box-shadow: $shadow-sm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $text-base;
+    gap: $gap-8;
+    border-radius: $rounded-md;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &__primary {
+        background: $btn_bg_main;
+        color: $color-white;
+
+        &:hover {
+            background: $color-white;
+            color: $btn_bg_main;
+        }
+    }
+
+    &__secondary {
+        background: $btn_bg_white;
+        color: $color-main;
+        border: 2px solid transparent;
+
+        &:hover {
+            background: $color-main;
+            color: $btn_bg_secondary;
+        }
+    }
+
+    &__bordered {
+        background: $btn_bg_white;
+        color: $color-main;
+
+        &:hover {
+            background: $color-main;
+            color: $btn_bg_secondary;
+        }
+    }
+
+
+}
+
+
