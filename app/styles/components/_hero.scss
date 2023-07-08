@@ -102,14 +102,14 @@
         // overflow: hidden;
         
         & > img {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 50%;
+            // position: absolute;
+            // top: 0;
+            // right: 0;
+            width: 100%;
             height: auto;
             object-fit: cover;
             transition: all 1s;
-            transform: rotate(-30deg) translateX(-150px) translateY(-100px);
+            // transform: rotate(-30deg) translateX(-150px) translateY(-100px);
         }
     }
 }
