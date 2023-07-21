@@ -1,0 +1,18 @@
+.news-slider {
+    width: $full;
+    height: auto;
+    background: $bg-dark;
+
+    & .marquee-container  {
+        height: $full;
+    }
+
+    &__inner {
+        padding: 20px 0px;
+        color: white;
+    }
+
+    &__item {
+        padding-right: 200px;
+    }
+}

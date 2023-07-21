@@ -26,7 +26,7 @@ const Tab: React.FC<TabProps> = ({label, value, onClick, active, disabled, icon:
         `}
         onClick={handleTabClick}
     >
-        {label}
+        <span className='tab__label'>{label}</span>
         {Icon && (
             <Icon
                 size={20}

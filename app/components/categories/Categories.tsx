@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 import Container from '../Container'
+import ProductCard from '../products/ProductCard'
+import Heading from '../UI/Heading'
 import Tab from '../UI/Tab'
 
 const tabsData = [
@@ -29,6 +31,7 @@ const Categories = () => {
   return (
     <Container>
         <div className='categories__inner'>
+            <Heading title='New Arrivals' spanword='Shoes' align='right' />
             <div className='categories__tabs'>
                 <ul className='tabs__list'>
                     {tabsData.map((item: any) => {
@@ -36,7 +39,18 @@ const Categories = () => {
                     })}
                 </ul>
             </div>
-            <div className='categories__content'></div>
+            <div className='categories__content'>
+                <ProductCard data={'hello'} width={'100%'} />
+                <ProductCard data={'hello'} width={'100%'} />
+                <ProductCard data={'hello'} width={'100%'} />
+                <ProductCard data={'hello'} width={'100%'} />
+                <ProductCard data={'hello'} width={'100%'} />
+                <ProductCard data={'hello'} width={'100%'} />
+                <ProductCard data={'hello'} width={'100%'} />
+                <ProductCard data={'hello'} width={'100%'} />
+                <ProductCard data={'hello'} width={'100%'} />
+                <ProductCard data={'hello'} width={'100%'} />
+            </div>
         </div>
     </Container>
   )

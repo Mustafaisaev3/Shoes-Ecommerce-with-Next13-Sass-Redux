@@ -1,0 +1,21 @@
+.product-slider {
+    padding: 80px 0px;
+
+    & .swiper-button-prev, .swiper-button-next {
+        background-color: $bg-dark;
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+
+        &::after {
+            font-size: 15px;
+            color: white;
+        }
+    }
+}
+
+.marquee {
+    & div {
+        padding-right: 100px;
+    }
+}
