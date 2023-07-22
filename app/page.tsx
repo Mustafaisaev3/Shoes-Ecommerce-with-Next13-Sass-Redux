@@ -1,4 +1,5 @@
 import Discount from "./components/banners/Discount";
+import DoubleBanner from "./components/banners/DoubleBanner";
 import Categories from "./components/categories/Categories";
 import Hero from "./components/hero/Hero";
 import NewsMarqueeSlider from "./components/NewsMarqueeSlider";
@@ -14,6 +15,8 @@ export default function Home() {
       <Discount />
       <ProductSlider />
       <NewsMarqueeSlider />
+      <DoubleBanner />
+      <ProductSlider />
     </>
   )
 }

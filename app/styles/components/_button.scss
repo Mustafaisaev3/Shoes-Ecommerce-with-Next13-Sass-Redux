@@ -39,6 +39,7 @@
     &__bordered {
         background: $btn_bg_white;
         color: $color-main;
+        border: 1px solid $color-main;
 
         &:hover {
             background: $color-main;
