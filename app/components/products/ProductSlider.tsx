@@ -10,12 +10,23 @@ import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-const ProductSlider = () => {
+interface ProductSliderInterface {
+  headingSetting: {
+    title: string,
+    spanword: string,
+    align: 'left' | 'center' | 'right',
+    link?: string,
+    linkTitle?: string,
+  }
+}
+
+
+const ProductSlider: React.FC<ProductSliderInterface> = ({headingSetting: { title, spanword, align, link, linkTitle }}) => {
   return (
     <div className='product-slider'>
       <div className="container">
         <div className="product-slider__inner">
-          <Heading title='Sale' spanword='Products' align='left' link={{link: 'hdhdhdhd', text: 'Show More'}} />
+          <Heading title={title} spanword={spanword} align={align} link={link && {link, text: linkTitle}} />
           <div className="product-slider__container">
             <Swiper
               modules={[Navigation, Pagination, Scrollbar, A11y]}

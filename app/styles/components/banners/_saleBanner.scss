@@ -1,0 +1,81 @@
+.sale-banner {
+    width: 100%;
+    height: 500px;
+    background-color: $bg-dark;
+
+    &__inner {
+        width: $full;
+        height: $full;
+        position: relative;
+    }
+
+    &__content {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: $gap-20;
+    }
+
+    &__bage {
+        width: 150px;
+        height: 60px;
+        background: rgb(255, 25, 25);
+        font-size: $text-xl;
+        font-weight: 700;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: white;
+        font-size: $text-6xl;
+    }
+
+    &__timer {
+        display: flex;
+        align-items: center;
+        gap: $gap-20;
+        color: $color-main;
+
+        &-item {
+            width: 70px;
+            height: 70px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: $gap-5;
+            background-color: $bg-main;
+            border-radius: 15px;
+            box-shadow: rgb(215, 233, 248) 3px 3px 6px 0px inset, rgba(220, 220, 220, 0.5) -3px -3px 6px 1px inset;
+        }
+
+        &-num {
+            font-size: $text-2xl;
+            font-weight: 600;
+        }
+
+        &-text {
+            font-size: $text-xs;
+        }
+    }
+
+    &__img {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        height: 500px;
+        z-index: 1;
+    }
+}
+
+// Nike Free Sneakers Basketball

@@ -1,9 +1,11 @@
 import Discount from "./components/banners/Discount";
 import DoubleBanner from "./components/banners/DoubleBanner";
+import SaleBanner from "./components/banners/SaleBanner";
 import Categories from "./components/categories/Categories";
 import Hero from "./components/hero/Hero";
 import NewsMarqueeSlider from "./components/NewsMarqueeSlider";
-import ProductSlider from "./components/products/ProductSlider";
+import SaleProsuctsSlider from "./components/sliders/SaleProsuctsSlider";
+import PopularProsuctsSlider from "./components/sliders/PopularProsuctsSlider";
 
 
 export default function Home() {
@@ -13,10 +15,11 @@ export default function Home() {
       <Hero />
       <Categories />
       <Discount />
-      <ProductSlider />
+      <SaleProsuctsSlider />
       <NewsMarqueeSlider />
       <DoubleBanner />
-      <ProductSlider />
+      <SaleBanner />
+      <PopularProsuctsSlider />
     </>
   )
 }
