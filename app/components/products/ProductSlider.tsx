@@ -15,8 +15,8 @@ interface ProductSliderInterface {
     title: string,
     spanword: string,
     align: 'left' | 'center' | 'right',
-    link?: string,
-    linkTitle?: string,
+    link: string,
+    linkTitle: string,
   }
 }
 
@@ -26,7 +26,7 @@ const ProductSlider: React.FC<ProductSliderInterface> = ({headingSetting: { titl
     <div className='product-slider'>
       <div className="container">
         <div className="product-slider__inner">
-          <Heading title={title} spanword={spanword} align={align} link={link && {link, text: linkTitle}} />
+          <Heading title={title} spanword={spanword} align={align} link={{link, text: linkTitle}} />
           <div className="product-slider__container">
             <Swiper
               modules={[Navigation, Pagination, Scrollbar, A11y]}

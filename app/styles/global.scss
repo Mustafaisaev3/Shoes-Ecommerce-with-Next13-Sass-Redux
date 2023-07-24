@@ -7,6 +7,9 @@
         'base/typography',
         'base/spacing';
 
+@import 'layout/footer',
+        'layout/header';
+
 @import 'components/navbar',
         'components/menu',
         'components/logo',

@@ -5,8 +5,20 @@
     box-sizing: border-box;
 }
 
+ul {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+
 a {
     text-decoration: none;
+    transition: 0.3s all;
+    color: $color-main;
+
+    &:hover {
+        color: rgb(179, 9, 9);
+    }
 }
 
 .container {

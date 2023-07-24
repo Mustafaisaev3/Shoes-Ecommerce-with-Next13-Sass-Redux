@@ -1,3 +1,98 @@
 .footer {
-    flex: 0 0 auto
+    width: $full;
+    height: auto;
+    flex: 0 0 auto;
+    padding-top: 70px;
+    background-color: $bg-secondary;
+
+    &__inner {
+        width: $full;
+        height: $full;
+        padding-bottom: 70px;
+    }
+
+    &__main {
+        width: $full;
+        height: $full;
+        display: grid;
+        grid-template-columns: repeat(15, minmax(0, 1fr));
+        grid-template-rows: 1fr;
+    }
+
+    &__widget {
+        width: $full;
+        height: $full;
+
+        &-contact {
+            grid-column: span 4 ;
+            // background-color: red;
+
+            & ul > li {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+        
+        &-info {
+            grid-column: span 3;
+            // background-color: rgb(34, 255, 0);
+        }
+        
+        &-service {
+            grid-column: span 3;
+            // background-color: rgb(0, 47, 255);
+        }
+        
+        &-download {
+            grid-column: span 5;
+
+            p {
+                font-size: $text-base;
+                color: #444;
+                line-height: 32px;
+                // margin-top: -4px;
+                margin: 0 0 6px
+            }
+            // background-color: rgb(255, 0, 234);
+        }
+    }
+
+    &__title {
+        color: $color-main;
+        font-size: $text-xl;
+        font-weight: bold;
+        margin: 0 0 20px;
+    }
+
+    &__apps {
+        display: flex;
+        gap: $gap-15;
+    }
+
+    & ul li {
+        font-size: $text-base;
+        color: #444;
+        line-height: 32px;
+        // margin-top: -4px;
+        margin: 0 0 6px
+    }
+
+    &__bottom {
+        width: $full;
+        height: 50px;
+        background-color: $bg-dark;
+
+        &-inner {
+            width: $full;
+            height: $full;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            & > p {
+                color: $color-secondary;
+            }
+
+        }
+    }
 }
