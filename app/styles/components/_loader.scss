@@ -1,0 +1,43 @@
+
+.loader {
+    width: $full;
+    height: $full;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader__wrapper {
+    width: $full;
+    height: $full;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader__icon path {
+    fill: transparent;
+    stroke: 10;
+    stroke: $bg-dark;
+    stroke-dasharray: 2550;
+    stroke-dashoffset: 0;
+    animation: animate-nike-loading 3s infinite alternate linear forwards ;
+}
+
+
+@keyframes animate-nike-loading {
+    0% {
+        stroke-dashoffset: 0;
+    }
+    40% {
+        stroke-dashoffset: 2550;
+    }
+    80% {
+        stroke-dashoffset: 5100;
+        fill: transparent;
+    }
+    100% {
+        stroke-dashoffset: 5100;
+        fill: $bg-dark;
+    }
+}

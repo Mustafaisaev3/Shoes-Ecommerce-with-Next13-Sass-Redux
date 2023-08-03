@@ -1,0 +1,39 @@
+.pagination-wrapper {
+    margin: 10px 0px;
+}
+
+.pagination {
+
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: right;
+        list-style: none;
+        gap: $gap-10;
+    }
+
+    &__item {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        height: 30px;
+        width: 30px;
+        padding: 0;
+        text-decoration: none;
+        background-color: #fff;
+        color: $color-main;
+        font-weight: 500;
+        cursor: pointer;
+        border-radius: 5px;
+
+        &:hover {
+            border: 1px solid $color-main;
+        }
+
+        &.active {
+            background-color: $bg-dark;
+            color: white;
+        }
+    }
+}

@@ -21,12 +21,29 @@
         'components/discount',
         'components/newsSlider',
         'components/categories',
+        'components/loader',
+        'components/collectionTopbar',
+        'components/breadcrumbs',
+        'components/pagination',
 
 
         // Banners
         'components/banners/doubleBanner',
         'components/banners/saleBanner',
 
+        // Filters
+        'components/filters/collectionFilters',
+        'components/filters/filterBlock',
+
+        // UI
+        'components/ui/checkbox',
+        'components/ui/radiobox',
+        'components/ui/dropdown',
+
         // Products
         'components/products/productsSlider',
+        'components/products/productGrid',
         'components/products/productCard';
+
+@import 'pages/collection';
+

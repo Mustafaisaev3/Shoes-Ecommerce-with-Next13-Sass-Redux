@@ -21,12 +21,18 @@ a {
     }
 }
 
+fieldset {
+    padding: 0;
+    border: none;
+}
+
 .container {
-    max-width: 1400px;
+    max-width: 1600px;
     height: 100%;
     margin: 0 auto;
     padding: 0 20px;
     // mx-auto xl:px-20 md:px-10 sm:px-2 px-4
 }
+
 
 

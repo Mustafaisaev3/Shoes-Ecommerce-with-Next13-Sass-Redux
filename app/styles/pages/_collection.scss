@@ -1,0 +1,36 @@
+.collection {
+    width: $full;
+    height: auto;
+    padding-top: 100px;
+
+    &__banner {
+        width: $full;
+        height: 200px;
+        background: gray;
+        margin-bottom: 50px;
+        cursor: pointer;
+
+        & > img {
+            width: $full;
+            height: $full;
+            object-fit: cover;
+            filter: grayscale(0.8);
+            
+            &:hover {
+                filter: grayscale(0);
+            }
+        }
+    }
+
+
+    &__inner {
+        width: $full;
+        height: auto;
+    }
+
+    &__content {
+        width: $full;
+        height: $full;
+        display: flex;
+    }
+}

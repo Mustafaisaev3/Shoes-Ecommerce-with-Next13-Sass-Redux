@@ -5,6 +5,7 @@ import { HiShoppingBag } from 'react-icons/hi'
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai'
 import Button from '../UI/Button';
 import { useState } from 'react'
+import Loader from '../Loader'
 
 interface ProductCardProps {
     data: any;

@@ -1,0 +1,24 @@
+.collection-topbar {
+    width: $full;
+    height: auto;
+    padding: 0px 30px;
+    gap: $gap-15;
+
+    &__content {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    &__categories {
+        display: flex;
+        gap: $gap-15;
+    }
+
+    &__header {
+        width: 100%;
+        height: 50px;
+        font-size: 25px;
+        display: flex;
+        justify-content: space-between;
+    }
+}

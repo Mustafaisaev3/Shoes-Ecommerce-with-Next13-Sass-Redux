@@ -1,0 +1,28 @@
+.radiobox {
+    width: auto;
+    height: auto;
+    display: flex;
+    gap: $gap-15;
+    cursor: pointer;
+
+    & input {
+        display: none;
+    }
+    
+    
+}
+
+.radiobox-round {
+    width: 20px;
+    height: 20px;
+    border: 1px solid $color-main;
+    border-radius: 100%;
+}
+
+input:checked + div {
+    background-color: $color-main; 
+}
+
+input:checked span {
+    color: $color-main; 
+}

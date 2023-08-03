@@ -1,0 +1,11 @@
+.breadcrumb ol {
+    display: flex;
+    gap: $gap-10;
+    list-style: none;
+    font-size: $text-base;
+    text-transform: capitalize;
+
+    & .active-link {
+        color: rgb(179, 9, 9);
+    }
+}
