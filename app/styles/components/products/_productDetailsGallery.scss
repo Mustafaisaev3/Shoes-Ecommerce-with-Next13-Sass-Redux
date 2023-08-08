@@ -1,0 +1,96 @@
+.product-details__gallery {
+    min-width: 900px;
+    height: 600px;
+    display: flex;
+
+    & .gallery-slider__wrapper {
+        width: 150px;
+        height: $full;
+        background: $bg-secondary;
+        border-radius: $rounded-md;
+        padding: 20px;
+
+    }
+
+    & .gallery-slider__inner {
+        width: $full;
+        height: $full;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: $gap-20;
+
+    }
+}
+
+.gallery-slider {
+    &__btn-prev, &__btn-next {
+        width: $full;
+        height: 60px;
+        background: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid $bg-dark;
+        cursor: pointer;
+
+        &:hover {
+
+        }
+    }
+
+    &__images {
+        display: flex;
+        flex-direction: column;
+        gap: $gap-15;
+        flex: 1;
+        overflow-y: scroll;
+        scrollbar-width: none;
+
+        & div {
+            width: $full;
+            min-height: 70px;
+            overflow: hidden;
+
+            & img {
+                width: $full;
+                height: $full;
+                object-fit: cover;
+
+                &.active {
+                    border-top: 1px solid $color-main;
+                    border-bottom: 1px solid $color-main;
+                }
+            }
+        }
+    }
+
+    &__btn-prev {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    &__btn-next {
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+}
+
+.gallery__image-wrapper {
+    width: $full;
+    height: $full;
+    overflow: hidden;
+    position: relative;
+
+    & > img {
+        width: $full;
+        height: $full;
+        object-fit: contain;
+    }
+
+    .gallery__like-icon {
+        position: absolute;
+        top: 20px;
+        right: 50px;
+    }
+}

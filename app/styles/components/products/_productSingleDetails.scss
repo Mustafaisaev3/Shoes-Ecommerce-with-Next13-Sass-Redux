@@ -1,0 +1,95 @@
+.product-details {
+    width: $full;
+    height: $full;
+    
+    &__inner {
+        // display: flex;
+    }
+
+    &__top {
+        display: flex;
+    }
+
+    &__left {
+        display: flex;
+        flex-direction: column;
+        padding-right: 30px;
+
+        .product-details__description {
+            width: $full;
+            height: auto;
+            padding-bottom: 30px;
+
+            &-title {
+                margin-top: 30px;
+                padding-bottom: 1.6rem;
+                color: rgb(101, 101, 101);
+                font-weight: 500;
+                font-size: 1.6rem;
+                line-height: 1;
+                letter-spacing: 0.08rem;
+                white-space: nowrap;
+                text-transform: uppercase;
+                text-overflow: ellipsis;
+                border-bottom: 1px solid rgb(239, 239, 239);
+            }
+
+            &-content {
+                padding-top: 10px;
+                letter-spacing: 0.08rem;
+                color: rgb(101, 101, 101);
+                font-size: $text-lg
+            }
+        }
+    }
+
+    &__bottom {
+        width: $full;
+        height: auto;
+        padding: 50px 0px;
+
+        .product-details__properties {
+            width: $full;
+            height: auto;
+            
+            .properties__list {
+                width: $full;
+                height: $full;
+                display: grid;
+                grid-template-columns: repeat(6, 1fr);
+                border: 1px solid $color-main;
+
+                &-item {
+                    width: $full;
+                    height: auto;
+                    padding: 20px;
+                    color: $color-main;
+                    border-right: 1px solid $color-main;
+
+                    & > div {
+                        margin-bottom: 0.6rem;
+                        color: rgb(101, 101, 101);
+                        font-size: $text-xs;
+                        line-height: 1;
+                        letter-spacing: 0.08rem;
+                        text-transform: uppercase;
+                    }
+
+                    & > p {
+                        font-weight: 400;
+                        font-size: $text-lg;
+                        font-family: ProximaNova,sans-serif;
+                        line-height: 1.35;
+                        letter-spacing: 0;
+                    }
+
+                    &:last-of-type {
+                        border: 0px;
+                    }
+                }
+
+            }
+
+        }
+    }
+}

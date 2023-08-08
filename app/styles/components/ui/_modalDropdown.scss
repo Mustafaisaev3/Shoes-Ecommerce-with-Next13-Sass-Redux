@@ -1,0 +1,102 @@
+.modal-dropdown {
+    width: auto;
+    height: auto;
+    position: relative;
+
+    &__header {
+        width: auto;
+        height: 50px;
+        padding: 10px 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: $gap-10;
+        font-size: $text-base;
+        border: 1px solid;
+        border-radius: $rounded-md;
+        box-shadow: $shadow-md;
+        color: black;
+        cursor: pointer;
+        transition: 0.3s all;
+    }
+
+    &__body {
+        width: auto;
+        height: auto;
+        position: absolute;
+        top: calc(100% + 5px);
+        right: 0;
+        padding: 20px;
+        background-color: white;
+        border: 1px solid;
+        border-radius: $rounded-md;
+        box-shadow: $shadow-md;
+        color: black;
+        transition: 0.3s all;
+        z-index: 1;
+        overflow: hidden;
+    }
+
+    &__value {
+        min-width: 80px;
+        padding: 5px 10px; 
+        border-radius: 5px; 
+        background-color: #262626; 
+        color: white; 
+        display: flex; 
+        align-items: center; 
+        justify-content: space-between;
+        cursor: default;
+
+        & .delete {
+            padding: 3px;
+            border-radius: $full;
+            background: white;
+            color: $color-main;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+    }
+
+    .dropdown__list {
+        width: $full;
+        height: auto;
+
+        &-item {
+            width: $full;
+            height: auto;
+            padding: 15px 10px;
+
+            &:hover {
+                background: gray;
+                color: white;
+            }
+        }
+    }
+
+    .tab__icon {
+        color: $bg-dark;
+    }
+
+    &.active {
+        border: $bg-dark 1px solid;
+        background-color: $bg-dark;
+        color: white;
+
+        .tab__icon {
+            color: white;
+        }
+    }
+
+
+    &.active:hover {
+        background-color: #262626fa;
+
+        & .tab__label {
+            color: white;
+        }
+    }
+
+}

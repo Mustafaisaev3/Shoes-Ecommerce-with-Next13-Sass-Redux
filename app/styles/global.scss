@@ -39,11 +39,17 @@
         'components/ui/checkbox',
         'components/ui/radiobox',
         'components/ui/dropdown',
+        'components/ui/accordion',
+        'components/ui/modalDropdown',
 
         // Products
         'components/products/productsSlider',
         'components/products/productGrid',
+        'components/products/productDetailsGallery',
+        'components/products/productOptions',
+        'components/products/productSingleDetails',
         'components/products/productCard';
 
-@import 'pages/collection';
+@import 'pages/products',
+        'pages/collection';
 
