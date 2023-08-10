@@ -4,16 +4,17 @@ import { IconType } from 'react-icons'
 
 interface TabProps {
   label?: string,
-  value: string,
+  value: string | {value: any, hex: string} | any,
   onClick?: (value: any) => any,
   active?: boolean,
   disabled?: boolean,
   icon?: IconType,
   width?: number,
   height?: number,
+  colored?: boolean
 }
 
-const Tab: React.FC<TabProps> = ({label, value, onClick, active, disabled, icon: Icon, width, height}) => {
+const Tab: React.FC<TabProps> = ({label, value, onClick, active, disabled, icon: Icon, width, height, colored}) => {
 
   const handleTabClick = () => {
     onClick && onClick(value)
@@ -28,8 +29,12 @@ const Tab: React.FC<TabProps> = ({label, value, onClick, active, disabled, icon:
         `}
         onClick={handleTabClick}
         style={{width: (width && `${width}px`), height: (height && `${height}px`)}}
-    >
-        <span className='tab__label'>{label}</span>
+    >   
+        {colored ? (
+          <span className='tab__label colored' style={{backgroundColor: value.hex}}></span>
+        ) : (
+          <span className='tab__label'>{label}</span>
+        )}
         {Icon && (
             <Icon
                 size={20}

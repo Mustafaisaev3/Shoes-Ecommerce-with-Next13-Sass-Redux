@@ -1,7 +1,9 @@
 import { Inter } from 'next/font/google'
 import "../app/styles/global.scss";
+import ManagedModal from './components/common/zoomModal/managed-zoomModal';
 import Footer from './components/footer/Footer';
 import Navbar from './components/navbar/Navbar';
+import { ManagedUIContext } from './context/ui.context';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,9 +20,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Navbar />
-        {children}
-        <Footer />
+        <ManagedUIContext>
+          <Navbar />
+          {children}
+          <Footer />
+          <ManagedModal />
+        </ManagedUIContext>
       </body>
     </html>
   )

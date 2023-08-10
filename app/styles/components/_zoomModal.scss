@@ -1,0 +1,77 @@
+.zoom-modal {
+    width: $full;
+    height: $full;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: $bg-secondary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+
+    .zoom-modal__inner {
+        width: $full;
+        height: $full;
+        display: flex;
+
+        .zoom-modal__img { 
+            width: $full;
+            height: $full;
+
+            & > img {
+                width: $full;
+                height: $full;
+                object-fit: contain;
+                cursor: zoom-in;
+            }
+
+        }
+        .zoom-modal__actions { 
+            width: 100px;
+            height: $full;
+            border-left: 1px solid $color-main;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .zoom-modal__close {
+                width: 100px;
+                height: 100px;
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                
+                & > svg {
+                    cursor: pointer;
+                }
+            }
+
+            .images__list {
+                width: $full;
+                height: auto;
+
+                &-item {
+                    width: $full;
+                    height: auto;
+                    padding: 5px 0;
+                    filter: blur(1px);
+
+                    & > img {
+                        width: $full;
+                        height: $full;
+                        object-fit: cover;
+                    }
+
+                    &.active {
+                        filter: blur(0);
+                    }
+                }
+            }
+        }
+    }
+}

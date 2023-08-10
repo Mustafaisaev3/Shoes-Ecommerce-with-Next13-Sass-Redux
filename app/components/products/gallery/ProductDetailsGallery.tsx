@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { BsChevronUp, BsChevronDown, BsHeart } from 'react-icons/bs'
 import { motion } from 'framer-motion'
+import { useUI } from '@/app/context/ui.context'
 
 const shoeImages = [
     'https://img.stadiumgoods.com/jordan-air-jordan-1-retro-high-og-unc-toe_19856413_45845000_2048.jpg',
@@ -18,6 +19,8 @@ const shoeImages = [
 const ProductDetailsGallery = () => {
   const [activeIndex, setActiveIndex] = useState<number>(0)
   const [activeImage, setActiveImage] = useState<string>(shoeImages[activeIndex])
+  const { openProductImgZoomModal, setProductImgZoomData } = useUI()
+
   const imagesLength = shoeImages.length - 1
 
   const imagesSliderContainer = useRef<null | HTMLDivElement>(null)
@@ -34,6 +37,11 @@ const ProductDetailsGallery = () => {
         imagesSliderContainer.current!.scrollTop += imageHeight.current!.clientHeight + 20
     }
 
+  }
+
+  const handleOpenProductImgZoomModal = () => {
+    setProductImgZoomData(shoeImages)
+    return openProductImgZoomModal()
   }
 
   useEffect(() => {
@@ -62,8 +70,15 @@ const ProductDetailsGallery = () => {
             </div>
         </div>
         <div className='gallery__image-wrapper'>
-            <motion.img key={activeImage} initial={{opacity: 0, x: -50}} animate={{opacity: 1, x: 0}} src={activeImage} alt="shoe-img"  />
-            <div className='gallery__like-icon'>
+            <motion.img 
+              key={activeImage} 
+              initial={{opacity: 0, x: -50}} 
+              animate={{opacity: 1, x: 0}} 
+              src={activeImage} 
+              alt="shoe-img"
+              onClick={handleOpenProductImgZoomModal}  
+            />
+            <div className='gallery__like-icon' >
                 <BsHeart size={25} />
             </div>
         </div>

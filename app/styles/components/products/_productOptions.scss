@@ -67,6 +67,15 @@
         & .color {
             width: 100%;
             height: auto;
+
+            & .color-container {
+                width: 400px;
+                height: auto;
+                display: flex;
+                flex-wrap: wrap;
+                gap: $gap-10;
+                
+            }
         }
     }
 }

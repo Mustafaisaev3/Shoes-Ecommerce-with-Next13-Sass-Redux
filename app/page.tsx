@@ -6,7 +6,6 @@ import Hero from "./components/hero/Hero";
 import NewsMarqueeSlider from "./components/NewsMarqueeSlider";
 import SaleProsuctsSlider from "./components/sliders/SaleProsuctsSlider";
 import PopularProsuctsSlider from "./components/sliders/PopularProsuctsSlider";
-import Footer from "./components/footer/Footer";
 
 
 export default function Home() {
@@ -21,7 +20,6 @@ export default function Home() {
       <DoubleBanner />
       <SaleBanner />
       <PopularProsuctsSlider />
-      <Footer />
     </>
   )
 }

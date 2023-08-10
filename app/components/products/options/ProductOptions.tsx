@@ -28,6 +28,7 @@ const accItems = [
 
 const ProductOptions = () => {
   const [size, setSize] = useState<null | string>(null)
+  const [color, setColor] = useState<null | {value: string, hex: string}>(null)
 
   return (
     <div className='product-options__wrapper'>
@@ -52,13 +53,14 @@ const ProductOptions = () => {
             </ModalDropdown>
           </div>
           <div className='color'>
-            <ModalDropdown title={'color'} activeValue={size} setValue={setSize}>
-              <div className='size-container'>
-                <Tab active={true ? size == 'S' : false} label='S' value='S' height={50} width={70} onClick={setSize} />
-                <Tab active={true ? size == 'M' : false} label='M' value='M' height={50} width={70} onClick={setSize} />
-                <Tab active={true ? size == 'L' : false} label='L' value='L' height={50} width={70} onClick={setSize} />
-                <Tab active={true ? size == 'XL' : false} label='XL' value='XL' height={50} width={70} onClick={setSize} />
-                <Tab active={true ? size == 'XXL' : false} label='XXL' value='XXL' height={50} width={70} onClick={setSize} />
+            <ModalDropdown title={'color'} activeValue={color} setValue={setColor} color={color?.hex}>
+              <div className='color-container'>
+                <Tab active={true ? color?.hex == 'red' : false} value={{value: 'red', hex: 'red'}} colored height={50} width={70} onClick={setColor} />
+                <Tab active={true ? color?.hex == 'green' : false} value={{value: 'green', hex: 'green'}} colored height={50} width={70} onClick={setColor} />
+                <Tab active={true ? color?.hex == 'blue' : false} value={{value: 'blue', hex: 'blue'}} colored height={50} width={70} onClick={setColor} />
+                <Tab active={true ? color?.hex == 'gray' : false} value={{value: 'gray', hex: 'gray'}} colored height={50} width={70} onClick={setColor} />
+                <Tab active={true ? color?.hex == 'orange' : false} value={{value: 'orange', hex: 'orange'}} colored height={50} width={70} onClick={setColor} />
+                {/* <Tab active={true ? color?.hex == 'orange' : false} value={color?.value} colored height={50} width={70} onClick={setColor} /> */}
               </div>
             </ModalDropdown>
           </div>

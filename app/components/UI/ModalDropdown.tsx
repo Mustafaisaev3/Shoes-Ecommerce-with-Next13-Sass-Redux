@@ -9,10 +9,11 @@ interface ModalDropdownProps {
     activeValue?: string | any,
     getValue?: (value: any) => any,
     setValue?: (value: any) => any
-    children: any
+    children: any,
+    color?: string
 }
 
-const ModalDropdown: React.FC<ModalDropdownProps> = ({ title, activeValue, getValue, setValue, children }) => {
+const ModalDropdown: React.FC<ModalDropdownProps> = ({ title, activeValue, getValue, setValue, color, children }) => {
 //   const [value, setValue] = useState(activeValue)
   const [openDropdown, setOpenDropdown] = useState(false)
   const dropdownRef = useRef() as React.MutableRefObject<HTMLDivElement>;
@@ -44,7 +45,12 @@ const ModalDropdown: React.FC<ModalDropdownProps> = ({ title, activeValue, getVa
             {activeValue ? 
                 (
                     <div className="modal-dropdown__value" onClick={deleteValue}>
-                        <span>{activeValue}</span>
+                        {color ? (
+                            <span style={{width: '20px', height: '20px', borderRadius: '100%', backgroundColor: `${color}`}}></span>
+                        ) : (
+                            <span>{activeValue}</span>
+                        )}
+                        {/* <span>{activeValue}</span> */}
                         <span className="delete"><MdClose size={10} /></span>
                     </div>
                 ) 
