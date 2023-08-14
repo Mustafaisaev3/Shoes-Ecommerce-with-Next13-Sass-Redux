@@ -18,7 +18,7 @@ type ZoomModalProps = {
 
 const ZoomModal: React.FC<ZoomModalProps> = ({ open, onClose, children, }) => {
   const { closeProductImgZoomModal, productImgZoomData } = useUI();
-  const [zoom, setZoom] = useState<boolean>(true)
+  const [zoom, setZoom] = useState<boolean>(false)
   const [activeImgIndex, setActiveImgIndex] = useState<number>(0)
   const activeImg = productImgZoomData[activeImgIndex]
 
@@ -53,7 +53,7 @@ const ZoomModal: React.FC<ZoomModalProps> = ({ open, onClose, children, }) => {
                             <div className='images__list'>
                                 {productImgZoomData.map((img: string, index: number) => {
                                     return (
-                                        <div className={`images__list-item ${index == activeImgIndex ? 'active' : ''}`} onClick={() => setActiveImgIndex(index)}>
+                                        <div className={`images__list-item ${index == activeImgIndex ? 'active' : ''}`} onClick={() => setActiveImgIndex(index)} key={index}>
                                             <img src={img} alt="" />
                                         </div>
                                     )

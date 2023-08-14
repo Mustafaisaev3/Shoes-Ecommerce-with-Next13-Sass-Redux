@@ -1,9 +1,19 @@
+
 import { Inter } from 'next/font/google'
+import dynamic from 'next/dynamic';
 import "../app/styles/global.scss";
-import ManagedModal from './components/common/zoomModal/managed-zoomModal';
+// import ManagedDrawer from '@/app/components/common/drawer/managed-drawer';
+// import ManagedDrawer from '@/app/components/common/drawer/managed-drawer';
+import ManagedModal from '@/app/components/common/zoomModal/managed-zoomModal';
 import Footer from './components/footer/Footer';
 import Navbar from './components/navbar/Navbar';
-import { ManagedUIContext } from './context/ui.context';
+import { ManagedUIContext } from '@/app/context/ui.context';
+
+const ManagedDrawer = dynamic(
+  () => import('@/app/components/common/drawer/managed-drawer'),
+{ssr: false}
+);
+
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -25,6 +35,7 @@ export default function RootLayout({
           {children}
           <Footer />
           <ManagedModal />
+          <ManagedDrawer />
         </ManagedUIContext>
       </body>
     </html>

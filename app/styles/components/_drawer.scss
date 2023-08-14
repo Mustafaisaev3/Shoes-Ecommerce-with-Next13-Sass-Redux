@@ -1,0 +1,22 @@
+.drawer {
+    width: $full;
+    height: $full;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.421);
+    z-index: 10;
+
+    &__inner {
+        height: $full;
+        overflow-y: auto;
+        position: absolute;
+        right: 0;
+        top: 0;
+
+        & > div {
+            height: 100%;
+            width: auto;
+        }
+    }
+}

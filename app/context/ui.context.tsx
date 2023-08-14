@@ -5,6 +5,7 @@ import React, { PropsWithChildren } from "react";
 export interface State {
 
   displayProductImgZoom: boolean;
+  displayDrawer: boolean;
   displaySidebar: boolean;
   displayFilter: boolean;
   displayModal: boolean;
@@ -20,6 +21,7 @@ export interface State {
 
 const initialState = {
   displayProductImgZoom: false,
+  displayDrawer: false,
   displaySidebar: false,
   displayFilter: false,
   displayModal: false,
@@ -27,7 +29,7 @@ const initialState = {
   displaySearch: false,
   modalView: "LOGIN_VIEW",
   productImgZoom: "PRODUCT_IMG_ZOOM_VIEW",
-  drawerView: null,
+  drawerView: "CART_VIEW",
   productImgZoomData: [],
   modalData: null,
   toastText: "",
@@ -51,6 +53,12 @@ type Action =
     }
   | {
       type: "CLOSE_CART";
+    }
+  | {
+      type: "OPEN_DRAWER";
+    }
+  | {
+      type: "CLOSE_DRAWER";
     }
   | {
       type: "OPEN_SEARCH";
@@ -106,7 +114,7 @@ type MODAL_VIEWS =
   | "LOGIN_VIEW"
   | "FORGET_PASSWORD"
   | "PRODUCT_VIEW";
-type DRAWER_VIEWS = "CART_SIDEBAR" | "MOBILE_MENU";
+type DRAWER_VIEWS = "CART_VIEW" | "MOBILE_MENU";
 type ToastText = string;
 
 export const UIContext = React.createContext<State | any>(initialState);
@@ -201,6 +209,18 @@ function uiReducer(state: State, action: Action) {
         displayProductImgZoom: false,
       };
     }
+    case "OPEN_DRAWER": {
+      return {
+        ...state,
+        displayDrawer: true,
+      };
+    }
+    case "CLOSE_DRAWER": {
+      return {
+        ...state,
+        displayDrawer: false,
+      };
+    }
     case "SET_MODAL_VIEW": {
       return {
         ...state,
@@ -265,6 +285,9 @@ export const UIProvider: React.FC<PropsWithChildren> = (props) => {
   const openFilter = () => dispatch({ type: "OPEN_FILTER" });
   const closeFilter = () => dispatch({ type: "CLOSE_FILTER" });
 
+  const openDrawer = () => dispatch({ type: "OPEN_DRAWER" });
+  const closeDrawer = () => dispatch({ type: "CLOSE_DRAWER" });
+
   const openModal = () => dispatch({ type: "OPEN_MODAL" });
   const closeModal = () => dispatch({ type: "CLOSE_MODAL" });
   const openProductImgZoomModal = () => dispatch({ type: "OPEN_PRODUCT_IMG_ZOOM_MODAL" });
@@ -301,6 +324,8 @@ export const UIProvider: React.FC<PropsWithChildren> = (props) => {
       closeFilter,
       openModal,
       closeModal,
+      openDrawer,
+      closeDrawer,
       openProductImgZoomModal,
       closeProductImgZoomModal,
       openSearch,
