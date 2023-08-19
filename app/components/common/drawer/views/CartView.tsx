@@ -1,8 +1,10 @@
 'use client'
 
+import Cart from "@/app/components/cart/Cart"
+
 const CartView = () => {
   return (
-    <div style={{width: '300px', height: '100%', background: 'white'}}>CartView</div>
+    <Cart />
   )
 }
 

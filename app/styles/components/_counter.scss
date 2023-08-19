@@ -1,0 +1,41 @@
+.counter {
+    height: 32px;
+    background: $bg-dark;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: $rounded-md;
+    overflow: hidden;
+    flex-shrink: 0;
+    
+    &__btn {
+        height: $full;
+        width: 32px;
+        background: $bg-dark;
+        color: white;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        transition: all ease-in-out 0.3s;
+        cursor: pointer;
+        
+        &:hover {
+            background: rgb(61, 61, 61);
+        };
+    }
+
+    &__quantity {
+        height: $full;
+        width: 32px;
+        background: $bg-dark;
+        color: white;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        transition: all ease-in-out 0.3s;
+    }
+}
