@@ -6,12 +6,14 @@ import Logo from './Logo'
 import Menu from './Menu'
 import Search from './Search'
 import NavUserInfo from './NavUserInfo'
+import UserMenu from './UserMenu'
+import { SafeUser } from '@/app/types'
 
 interface NavbarProps {
-
+    currentUser: SafeUser | null
 }
 
-const Navbar: React.FC<NavbarProps> = () => {
+const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
   return (
     <nav className="navbar">
         <div className="container">
@@ -22,7 +24,8 @@ const Navbar: React.FC<NavbarProps> = () => {
                 </div>
                 <div className='navbar__inner-right'>
                     <Search />
-                    <NavUserInfo />
+                    <NavUserInfo currentUser={currentUser} />
+                    {/* <UserMenu currentUser={currentUser} /> */}
                 </div>
             </div>
         </div>

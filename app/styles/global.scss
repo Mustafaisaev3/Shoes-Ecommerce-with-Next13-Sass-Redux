@@ -28,11 +28,17 @@
         'components/zoomModal',
         'components/zoom',
         'components/drawer',
+        'components/modal',
         'components/counter',
+        'components/userMenu',
 
 
         // Drawer Views
         'components/drawerViews/cart',
+
+        // Modal Views
+        'components/modal/registerView',
+        'components/modal/loginView',
 
         // Cart
         'components/cart/cart',
@@ -52,6 +58,7 @@
         'components/ui/dropdown',
         'components/ui/accordion',
         'components/ui/modalDropdown',
+        'components/ui/input',
 
         // Products
         'components/products/productsSlider',

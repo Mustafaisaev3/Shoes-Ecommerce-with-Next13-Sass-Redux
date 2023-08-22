@@ -2,6 +2,11 @@
 
 import React, { PropsWithChildren } from "react";
 
+export enum ModalViewTypes {
+  REGISTER_VIEW = 'REGISTER_VIEW',
+  LOGIN_VIEW = 'LOGIN_VIEW',
+}
+
 export interface State {
 
   displayProductImgZoom: boolean;
@@ -27,7 +32,7 @@ const initialState = {
   displayModal: false,
   displayCart: false,
   displaySearch: false,
-  modalView: "LOGIN_VIEW",
+  modalView: ModalViewTypes.REGISTER_VIEW,
   productImgZoom: "PRODUCT_IMG_ZOOM_VIEW",
   drawerView: "CART_VIEW",
   productImgZoomData: [],
@@ -110,10 +115,9 @@ type Action =
     };
 
 type MODAL_VIEWS =
-  | "SIGN_UP_VIEW"
+  | "REGISTER_VIEW"
   | "LOGIN_VIEW"
-  | "FORGET_PASSWORD"
-  | "PRODUCT_VIEW";
+
 type DRAWER_VIEWS = "CART_VIEW" | "MOBILE_MENU";
 type ToastText = string;
 
