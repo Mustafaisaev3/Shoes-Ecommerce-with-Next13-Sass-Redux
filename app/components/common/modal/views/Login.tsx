@@ -70,8 +70,8 @@ const Login = () => {
                 <div className="line"></div>
 
                 <div className="login__social-logins">
-                    <Button className="btn btn-secondary" width={'100%'} title="Continue with Google" leftIcon={FcGoogle} />
-                    <Button className="btn btn-secondary" width={'100%'} title="Continue with GitHub" leftIcon={AiFillGithub} />
+                    <Button className="btn btn-secondary" width={'100%'} title="Continue with Google" leftIcon={FcGoogle} onClick={() => signIn('google')} />
+                    <Button className="btn btn-secondary" width={'100%'} title="Continue with GitHub" leftIcon={AiFillGithub} onClick={() => signIn('github')} />
                 </div>
             </div>
         </div>

@@ -9,6 +9,7 @@ import { AiFillGithub } from 'react-icons/ai'
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form"
 import { toast } from "react-hot-toast"
 import { useUI } from "@/app/context/ui.context"
+import { signIn } from "next-auth/react"
 
 const Register = () => {
   const { closeModal } = useUI()
@@ -24,7 +25,7 @@ const Register = () => {
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true)
-    
+
     axios.post('/api/register', data)
       .then(() => {
         closeModal()
@@ -65,8 +66,8 @@ const Register = () => {
                 <div className="line"></div>
 
                 <div className="register__social-logins">
-                    <Button className="btn btn-secondary" width={'100%'} title="Continue with Google" leftIcon={FcGoogle} />
-                    <Button className="btn btn-secondary" width={'100%'} title="Continue with GitHub" leftIcon={AiFillGithub} />
+                    <Button className="btn btn-secondary" width={'100%'} title="Continue with Google" leftIcon={FcGoogle} onClick={() => signIn('google')}/>
+                    <Button className="btn btn-secondary" width={'100%'} title="Continue with GitHub" leftIcon={AiFillGithub} onClick={() => signIn('github')} />
                 </div>
             </div>
         </div>
