@@ -1,5 +1,5 @@
 'use client'
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useRef } from 'react'
 import { AiOutlineMenu } from 'react-icons/ai'
 import Avatar from '../Avatar'
 import MenuItem from './MenuItem'
@@ -9,12 +9,14 @@ import { useRouter } from 'next/navigation'
 import { ModalViewTypes, useUI } from '@/app/context/ui.context'
 import { BiUser } from 'react-icons/bi'
 import Button from '../UI/Button'
+import useOnClickOutside from '@/app/hooks/useOnClickOitside'
 
 interface UserMenuProps {
     currentUser: SafeUser | null
 }
 
 const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
+  const userMenuRoot = useRef(null)
   const router = useRouter()
   const [isOpen, setIsOpen] = useState(false)
 
@@ -34,8 +36,10 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
     return openModal()
   }
 
+  useOnClickOutside(userMenuRoot, () => setIsOpen(false))
+
   return (
-    <div className="user-menu">
+    <div className="user-menu" ref={userMenuRoot}>
         <div className="user-menu__header">
             <div onClick={toggleOpen} className="user-menu__header-inner">
                 {/* <AiOutlineMenu />

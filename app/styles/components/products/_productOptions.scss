@@ -25,10 +25,18 @@
 
     .product-price {
         padding-top: 10px;
+
+        & > .old-price {
+            text-decoration: line-through;
+            font-size: $text-xl;
+            padding-right: 10px;
+            color: #4e4e4e;
+        }
         
         & > span {
             color: #131313;
             font-size: $text-3xl;
+            font-weight: 600;
             -webkit-text-decoration: auto;
             text-decoration: auto;
             text-decoration-color: #656565;

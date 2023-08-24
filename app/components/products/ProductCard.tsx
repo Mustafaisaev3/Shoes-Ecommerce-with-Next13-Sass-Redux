@@ -6,9 +6,10 @@ import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai'
 import Button from '../UI/Button';
 import { useState } from 'react'
 import Loader from '../Loader'
+import { Product } from '@prisma/client'
 
 interface ProductCardProps {
-    data: any;
+    product: Product;
     onAction?: (id: string) => void;
     disabled?: boolean;
     actionLabel?: string;
@@ -20,7 +21,7 @@ interface ProductCardProps {
 
   
 
-const ProductCard: React.FC<ProductCardProps> = ({data ,onAction ,disabled ,actionLabel ,actionId ,width ,height}) => {
+const ProductCard: React.FC<ProductCardProps> = ({product ,onAction ,disabled ,actionLabel ,actionId ,width ,height}) => {
   const [like, setLike] = useState(false)
 
   return (
@@ -31,7 +32,7 @@ const ProductCard: React.FC<ProductCardProps> = ({data ,onAction ,disabled ,acti
       <div className="product-card__top">
         <img
           className="product-card__image"
-          src={'/images/HeroSlider/air1.png'}
+          src={product.images[0]}
           alt="Product"
         />
         {like ? (
@@ -41,12 +42,12 @@ const ProductCard: React.FC<ProductCardProps> = ({data ,onAction ,disabled ,acti
         )}
       </div>
       <div className="product-card__bottom">
-        <div className='product-card__title'>Nike Air Force</div>
+        <div className='product-card__title'>{product.name}</div>
         <div className='product-card__rate'><HiStar size={20} color="#f1b44c" />(169 reviews)</div>
         <div className='product-card__actions'>
           <div className='product-card__price'>
-            <span className='product-card__price-old'>$160.00</span>
-            <span className='product-card__price-main'>$140.00</span>
+            <span className='product-card__price-old'>${product.price}</span>
+            <span className='product-card__price-main'>${product.salePrice}</span>
           </div>
           <div className='product-card__btn'>
             <Button icon={HiShoppingBag} size='sm' />

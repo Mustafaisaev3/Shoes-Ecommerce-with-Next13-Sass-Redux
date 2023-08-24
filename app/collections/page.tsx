@@ -2,8 +2,11 @@ import CollectionFilters from '@/app/components/collection/CollectionFilters'
 import CollectionTopbar from '@/app/components/collection/CollectionTopbar'
 import Pagination from '@/app/components/Pagination'
 import ProductGrid from '@/app/components/products/ProductGrid'
+import getProducts from '../actions/getProducts'
 
-const CollectionPage = () => {
+const CollectionPage = async ({ searchParams }: any) => {
+  const products = await getProducts(searchParams)
+
   return (
     <div className='collection'>
       <div className='collection__banner'>
@@ -15,7 +18,7 @@ const CollectionPage = () => {
             <CollectionFilters />
             <div style={{width: '100%'}}>
               <CollectionTopbar />
-              <ProductGrid />
+              <ProductGrid products={products}/>
               <Pagination />
             </div>
           </div>

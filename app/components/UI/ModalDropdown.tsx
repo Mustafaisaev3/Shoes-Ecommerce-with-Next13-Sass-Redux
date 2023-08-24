@@ -10,10 +10,11 @@ interface ModalDropdownProps {
     getValue?: (value: any) => any,
     setValue?: (value: any) => any
     children: any,
+    disable?: boolean,
     color?: string
 }
 
-const ModalDropdown: React.FC<ModalDropdownProps> = ({ title, activeValue, getValue, setValue, color, children }) => {
+const ModalDropdown: React.FC<ModalDropdownProps> = ({ title, activeValue, getValue, setValue, color, disable, children }) => {
 //   const [value, setValue] = useState(activeValue)
   const [openDropdown, setOpenDropdown] = useState(false)
   const dropdownRef = useRef() as React.MutableRefObject<HTMLDivElement>;
@@ -63,6 +64,8 @@ const ModalDropdown: React.FC<ModalDropdownProps> = ({ title, activeValue, getVa
                 {children}
             </div>
         ) : null}
+
+        {disable ? <div className="modal-dropdown__disable"></div> : null}
     </div>
   )
 }

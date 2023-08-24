@@ -7,6 +7,8 @@ import Tab from '../../UI/Tab'
 import { MdGppGood, MdAssignmentReturn } from 'react-icons/md'
 import { FaTruck } from 'react-icons/fa'
 import Button from '../../UI/Button'
+import axios from 'axios'
+import { SafeProduct } from '@/app/types'
 
 const accItems = [
   {
@@ -26,40 +28,61 @@ const accItems = [
   },
 ]
 
-const ProductOptions = () => {
+type ProductOptionsTypes = {
+  product: SafeProduct
+}
+
+const ProductOptions: React.FC<ProductOptionsTypes> = ({ product }) => {
   const [size, setSize] = useState<null | string>(null)
   const [color, setColor] = useState<null | {value: string, hex: string}>(null)
 
+
   return (
     <div className='product-options__wrapper'>
-      <div className='product-brand'>Nike</div>
+      <div className='product-brand'>{product.category}</div>
       <div className="product-name">
-        <h2>AIR JORDAN 1 RETRO HIGH OG</h2>
+        <h2>{product.name}</h2>
       </div>
       <div className="product-price">
-        <span>293 $</span>
+        {product.salePrice ? (
+          <>
+            <span className='old-price'>{product.price} $</span>
+            <span>{product.salePrice} $</span>
+          </>
+        ) : (
+          <span>{product.price} $</span>
+        )}
+
       </div>
       <div className="product-actions">
         <div className='product-actions__selects'>
           <div className='size'>
-            <ModalDropdown title={'size'} activeValue={size} setValue={setSize}>
+            <ModalDropdown title={'size'} activeValue={size} setValue={setSize} disable={product.size.length ? false : true}>
               <div className='size-container'>
-                <Tab active={true ? size == 'S' : false} label='S' value='S' height={50} width={70} onClick={setSize} />
+                {product.size.map((productSize: string) => {
+                  return <Tab active={true ? size == productSize : false} label={productSize} value={productSize} height={50} width={70} onClick={setSize} />
+
+                })}
+                {/* <Tab active={true ? size == 'S' : false} label='S' value='S' height={50} width={70} onClick={setSize} />
                 <Tab active={true ? size == 'M' : false} label='M' value='M' height={50} width={70} onClick={setSize} />
                 <Tab active={true ? size == 'L' : false} label='L' value='L' height={50} width={70} onClick={setSize} />
                 <Tab active={true ? size == 'XL' : false} label='XL' value='XL' height={50} width={70} onClick={setSize} />
-                <Tab active={true ? size == 'XXL' : false} label='XXL' value='XXL' height={50} width={70} onClick={setSize} />
+                <Tab active={true ? size == 'XXL' : false} label='XXL' value='XXL' height={50} width={70} onClick={setSize} /> */}
               </div>
             </ModalDropdown>
           </div>
           <div className='color'>
-            <ModalDropdown title={'color'} activeValue={color} setValue={setColor} color={color?.hex}>
+            <ModalDropdown title={'color'} activeValue={color} setValue={setColor} color={color?.hex} disable={product.color.length ? false : true}>
               <div className='color-container'>
-                <Tab active={true ? color?.hex == 'red' : false} value={{value: 'red', hex: 'red'}} colored height={50} width={70} onClick={setColor} />
+                {product.color.map((productColor: any) => {
+                  return <Tab active={true ? color?.hex == productColor.value : false} value={productColor} colored height={50} width={70} onClick={setColor} />
+
+                })}
+                {/* <Tab active={true ? color?.hex == 'red' : false} value={{value: 'red', hex: 'red'}} colored height={50} width={70} onClick={setColor} />
                 <Tab active={true ? color?.hex == 'green' : false} value={{value: 'green', hex: 'green'}} colored height={50} width={70} onClick={setColor} />
                 <Tab active={true ? color?.hex == 'blue' : false} value={{value: 'blue', hex: 'blue'}} colored height={50} width={70} onClick={setColor} />
                 <Tab active={true ? color?.hex == 'gray' : false} value={{value: 'gray', hex: 'gray'}} colored height={50} width={70} onClick={setColor} />
-                <Tab active={true ? color?.hex == 'orange' : false} value={{value: 'orange', hex: 'orange'}} colored height={50} width={70} onClick={setColor} />
+                <Tab active={true ? color?.hex == 'orange' : false} value={{value: 'orange', hex: 'orange'}} colored height={50} width={70} onClick={setColor} /> */}
                 {/* <Tab active={true ? color?.hex == 'orange' : false} value={color?.value} colored height={50} width={70} onClick={setColor} /> */}
               </div>
             </ModalDropdown>

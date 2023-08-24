@@ -10,6 +10,7 @@ import Navbar from './components/navbar/Navbar';
 import { ManagedUIContext } from '@/app/context/ui.context';
 import ToasterProvider from '@/providers/ToasterProvider';
 import getCurrentUser from './actions/getCurrentUser';
+import getProducts from './actions/getProducts';
 
 const ManagedDrawer = dynamic(
   () => import('@/app/components/common/drawer/managed-drawer'),
@@ -35,6 +36,7 @@ export default async function RootLayout({
 }) {
 
   const currentUser = await getCurrentUser()
+
   console.log(currentUser)
   return (
     <html lang="en">
