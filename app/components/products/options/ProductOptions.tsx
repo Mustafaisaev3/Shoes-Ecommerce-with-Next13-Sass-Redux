@@ -9,6 +9,7 @@ import { FaTruck } from 'react-icons/fa'
 import Button from '../../UI/Button'
 import axios from 'axios'
 import { SafeProduct } from '@/app/types'
+import ProductColors from '@/data/product-colors'
 
 const accItems = [
   {
@@ -75,7 +76,7 @@ const ProductOptions: React.FC<ProductOptionsTypes> = ({ product }) => {
             <ModalDropdown title={'color'} activeValue={color} setValue={setColor} color={color?.hex} disable={product.color.length ? false : true}>
               <div className='color-container'>
                 {product.color.map((productColor: any) => {
-                  return <Tab active={true ? color?.hex == productColor.value : false} value={productColor} colored height={50} width={70} onClick={setColor} />
+                  return <Tab active={true ? color?.hex == ProductColors[productColor].value : false} value={ProductColors[productColor].value} colored height={50} width={70} onClick={setColor} />
 
                 })}
                 {/* <Tab active={true ? color?.hex == 'red' : false} value={{value: 'red', hex: 'red'}} colored height={50} width={70} onClick={setColor} />

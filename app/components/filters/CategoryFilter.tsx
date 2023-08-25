@@ -12,7 +12,7 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({ getCategory }) => {
   }
 
   return (
-    <FilterBlock title="Category">
+    <FilterBlock title="Color">
         <CheckBox label={'Black'} value={'Black'} onClick={onCategorySelect} />
         <CheckBox label={'Blou'} value={'Blou'} onClick={onCategorySelect} />
         <CheckBox label={'Red'} value={'Red'} onClick={onCategorySelect} />

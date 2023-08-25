@@ -4,6 +4,7 @@ export interface IProductParams {
     size?: string;
     color?: string;
     category?: string;
+    price?: any;
   }
   
 
@@ -12,16 +13,31 @@ export default async function getProducts(params: IProductParams) {
     const {
         size,
         color,
-        category
+        category,
+        price
     } = params;
 
     let query: any = {};
 
     if (size) {
-        query.size = size;
+        query.size = {
+            has: size
+        }
     }
 
-    const products = await prisma.product.findMany();
+    if (color) {
+        query.color = {
+            has: color
+        }
+    }
+
+    if (category) {
+        query.category = category;
+    }
+
+    const products = await prisma.product.findMany({
+        where: query
+    });
 
     console.log(products)
 

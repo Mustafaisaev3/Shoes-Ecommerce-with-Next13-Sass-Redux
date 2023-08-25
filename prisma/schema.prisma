@@ -56,36 +56,10 @@ model Product {
   inStock           Int
   salePrice         Int?
   size              String[]
-  color             Json[]
+  color             String[]
   properties        Json
 
-  // variations        Variation @relation(fields: [variationsId], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  // variationsId      String @db.ObjectId
-
-  // variations        Variation[]
   orderProducts     OrderProduct[]
-}
-
-model Variation {
-  id                String @id @default(auto()) @map("_id") @db.ObjectId
-  value             String
-  meta              String?
-  attributeId       String @db.ObjectId
-
-  // product           Product @relation(fields: [productId], references: [id])
-  // productId         String @db.ObjectId
-
-  // products          Product[]
-
-  orderItem         OrderProduct @relation(fields: [id], references: [id], onDelete: Cascade)
-  orderItemId       Int
-}
-
-
-model Attribute {
-  id                String @id @default(auto()) @map("_id") @db.ObjectId
-  name              String
-  slug              String?
 }
 
 model Order {
@@ -106,7 +80,6 @@ model OrderProduct {
   productId         String @db.ObjectId
   order             Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
   orderId           String  @db.ObjectId
-  variations        Variation[]
 
 }
 

@@ -1,15 +1,13 @@
 'use client'
 
-import { useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import Breadcrumb from '../Breadcrumb'
 import Dropdown from '../UI/Dropdown'
 import Tab from '../UI/Tab'
+import { useRouter, useSearchParams } from 'next/navigation'
+import qs from 'query-string';
 
-const tabsData = [
-    {
-        label: 'Popular',
-        value: 'popular',
-    },
+const Categories = [
     {
         label: 'Men',
         value: 'men',
@@ -22,6 +20,10 @@ const tabsData = [
         label: 'Kids',
         value: 'kids',
     },
+    {
+        label: 'Slippers',
+        value: 'slippers',
+    },
 ]
 
 const options = [
@@ -31,7 +33,38 @@ const options = [
   ];
 
 const CollectionTopbar = () => {
-  const [activeCategory, setActiveCategory] = useState(tabsData[0].value)
+  const [activeCategory, setActiveCategory] = useState<string | null>(null)
+
+  const router = useRouter()
+  const params = useSearchParams()
+
+  const handleCategorySelect = (category: string) => {
+    setActiveCategory(category)
+  }
+
+  useEffect(() => {
+    let currentQuery = {}
+
+    if (params) {
+        currentQuery = qs.parse(params.toString())
+    }
+
+    const updatedQuery: any = {
+        ...currentQuery,
+        category: activeCategory
+    }
+
+    if (params?.get('category') === activeCategory) {
+        delete updatedQuery.category;
+    }
+
+    const url = qs.stringifyUrl({
+        url: '/collections/',
+        query: updatedQuery
+    }, { skipNull: true });
+  
+    router.push(url);
+  }, [activeCategory])
 
   return (
     <div className='collection-topbar'>
@@ -41,8 +74,8 @@ const CollectionTopbar = () => {
         </div>
         <div className='collection-topbar__content'>
             <div className='collection-topbar__categories'>
-                {tabsData.map((item: any) => {
-                    return <Tab label={item.label} value={item.value} active={activeCategory === item.value} onClick={setActiveCategory} />
+                {Categories.map((item: any) => {
+                    return <Tab key={item.label} label={item.label} value={item.value} active={activeCategory === item.value} onClick={() => handleCategorySelect(item.value)} />
                 })}
             </div>
             <Dropdown options={options} />

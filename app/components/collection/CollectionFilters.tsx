@@ -7,19 +7,21 @@ import PriceFilter from "../filters/PriceFilter"
 
 interface FiltersInterface {
     category: string[],
-    price: number | null
+    color: string | null,
+    price: number[] | null
 }
 
 const CollectionFilters: React.FC = () => {
   const [filters, setFilters] = useState<FiltersInterface>({
     category: [],
-    price: null
+    price: [],
+    color: null
   })
 
   const getCategory = (value: string) => {
     if (filters.category.includes(value)) {
         const filteredCategoryArr = filters.category.filter((item: string) => {
-            return item !== value
+          return item !== value
         })
 
         setFilters(prev => ({...prev, category: [...filteredCategoryArr]}))
@@ -31,13 +33,13 @@ const CollectionFilters: React.FC = () => {
 
   const getPrice = (value: any) => {
     if (filters.price === value) {
-        return
+      return
     }
     setFilters(prev => ({...prev, price: value}))
   }
 
   useEffect(() => {
-    console.log('state changed')
+    console.log(filters)
   }, [filters])
 
   return (
@@ -46,8 +48,8 @@ const CollectionFilters: React.FC = () => {
           Filters
         </div>
         <CategoryFilter getCategory={getCategory} />
-        <PriceFilter getPrice={getPrice} />
         <CategoryFilter getCategory={getCategory} />
+        <PriceFilter getPrice={getPrice} />
         <button className="btn btn-main " onClick={() => console.log(filters)}>filters</button>
     </div>
   )

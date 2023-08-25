@@ -5,10 +5,11 @@ import MenuItem from './MenuItem'
 const Menu = () => {
   return (
     <div className='menu'>
-        <MenuItem title='Mens' />
-        <MenuItem title='Womens' />
-        <MenuItem title='Kids' />
-        <MenuItem title='Sport' />
+        <MenuItem label='Mens' />
+        <MenuItem label='Womens' />
+        <MenuItem label='Kids' />
+        {/* <MenuItem label='Sport' /> */}
+        <MenuItem label='Slippers' />
     </div>
   )
 }
