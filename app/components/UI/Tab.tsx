@@ -27,11 +27,11 @@ const Tab: React.FC<TabProps> = ({label, value, onClick, active, disabled, icon:
             ${active && 'active'}
             ${disabled && 'disabled'}
         `}
-        onClick={onClick}
+        onClick={handleTabClick}
         style={{width: (width && `${width}px`), height: (height && `${height}px`)}}
     >   
         {colored ? (
-          <span className='tab__label colored' style={{backgroundColor: value.hex}}></span>
+          <span className='tab__label colored' style={{backgroundColor: value}}></span>
         ) : (
           <span className='tab__label'>{label}</span>
         )}

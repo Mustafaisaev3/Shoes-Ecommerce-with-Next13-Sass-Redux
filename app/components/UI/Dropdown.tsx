@@ -6,12 +6,12 @@ import { MdArrowDropDown } from 'react-icons/md'
 
 type DropdownValue = {
     value: string | number, 
-    label: string
+    label: string | number
 }
 
 interface DropdownProps {
     options: DropdownValue[],
-    getValue?: (value: DropdownValue) => any
+    getValue?: (value: number | string) => any
 }
 
 const Dropdown: React.FC<DropdownProps> = ({ options, getValue }) => {
@@ -29,7 +29,7 @@ const Dropdown: React.FC<DropdownProps> = ({ options, getValue }) => {
   }
   
   useEffect(() => {
-    getValue && getValue(value)
+    getValue && getValue(value.value)
   }, [value])
 
   useOnClickOutside(dropdownRef, () => setOpenDropdown(false))

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import ReactSlider from 'react-slider'
+import { useDebounce } from '../hooks/useDebounce'
 
 
 interface PriceRangeType {
@@ -13,12 +14,13 @@ interface PriceRangeType {
 
 const PriceRange: React.FC<PriceRangeType> = ({min = 0, max = 1000, minDistance, getValues}) => {
   const [values, setValues] = useState([min, max])
+  const debouncedValue = useDebounce(values, 1000)
 
   useEffect(() => {
     if (getValues) {
         getValues(values)
     }
-  }, [values])
+  }, [debouncedValue])
 
   return (
     <div className='price-range__container'>

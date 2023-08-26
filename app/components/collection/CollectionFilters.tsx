@@ -1,34 +1,49 @@
 'use client'
 
+import { useRouter, useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react"
+import qs from 'query-string';
 import CategoryFilter from "../filters/CategoryFilter"
+import ColorFilter from "../filters/ColorFilter"
 import FilterBlock from "../filters/FilterBlock"
 import PriceFilter from "../filters/PriceFilter"
+import SizeFilter from "../filters/SizeFilter"
 
 interface FiltersInterface {
-    category: string[],
+    // category: string[],
+    size: string | null,
     color: string | null,
-    price: number[] | null
+    price: number[]
 }
 
 const CollectionFilters: React.FC = () => {
+  const router = useRouter()
+  const params = useSearchParams()
+  
   const [filters, setFilters] = useState<FiltersInterface>({
-    category: [],
+    size: null,
     price: [],
     color: null
   })
 
-  const getCategory = (value: string) => {
-    if (filters.category.includes(value)) {
-        const filteredCategoryArr = filters.category.filter((item: string) => {
-          return item !== value
-        })
+  // const getCategory = (value: string) => {
+  //   if (filters.category.includes(value)) {
+  //       const filteredCategoryArr = filters.category.filter((item: string) => {
+  //         return item !== value
+  //       })
 
-        setFilters(prev => ({...prev, category: [...filteredCategoryArr]}))
-    } else {
-        setFilters(prev => ({...prev, category: [...prev.category, value]}))
-    }
+  //       setFilters(prev => ({...prev, category: [...filteredCategoryArr]}))
+  //   } else {
+  //       setFilters(prev => ({...prev, category: [...prev.category, value]}))
+  //   }
     
+  // }
+
+  const getSize = (value: any) => {
+    if (filters.size === value) {
+      return
+    }
+    setFilters(prev => ({...prev, size: value}))
   }
 
   const getPrice = (value: any) => {
@@ -38,8 +53,38 @@ const CollectionFilters: React.FC = () => {
     setFilters(prev => ({...prev, price: value}))
   }
 
+  const getColor = (value: any) => {
+    if (filters.color === value) {
+      return
+    }
+    setFilters(prev => ({...prev, color: value}))
+  }
+
   useEffect(() => {
-    console.log(filters)
+    let currentQuery = {}
+
+    if (params) {
+        currentQuery = qs.parse(params.toString())
+    }
+
+    const updatedQuery: any = {
+        ...currentQuery,
+        color: filters.color,
+        size: filters.size,
+        minPrice: filters.price[0],
+        maxPrice: filters.price[1],
+    }
+
+    // if (params?.get('category') === activeCategory) {
+    //     delete updatedQuery.category;
+    // }
+
+    const url = qs.stringifyUrl({
+        url: '/collections/',
+        query: updatedQuery
+    }, { skipNull: true });
+  
+    router.push(url);
   }, [filters])
 
   return (
@@ -47,8 +92,8 @@ const CollectionFilters: React.FC = () => {
         <div className="collection-filters__header">
           Filters
         </div>
-        <CategoryFilter getCategory={getCategory} />
-        <CategoryFilter getCategory={getCategory} />
+        <ColorFilter getColor={getColor}/>
+        <SizeFilter getSize={getSize} />
         <PriceFilter getPrice={getPrice} />
         <button className="btn btn-main " onClick={() => console.log(filters)}>filters</button>
     </div>

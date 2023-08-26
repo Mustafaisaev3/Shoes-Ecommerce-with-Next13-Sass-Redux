@@ -42,7 +42,7 @@ const ProductCard: React.FC<ProductCardProps> = ({product ,onAction ,disabled ,a
         )}
       </div>
       <div className="product-card__bottom">
-        <div className='product-card__title'>{product.name}</div>
+        <div className='product-card__title'><a href={`/products/${product.id}`}>{product.name}</a></div>
         <div className='product-card__rate'><HiStar size={20} color="#f1b44c" />(169 reviews)</div>
         <div className='product-card__actions'>
           <div className='product-card__price'>

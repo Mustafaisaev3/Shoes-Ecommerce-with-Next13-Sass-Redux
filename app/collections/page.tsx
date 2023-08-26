@@ -5,7 +5,9 @@ import ProductGrid from '@/app/components/products/ProductGrid'
 import getProducts from '../actions/getProducts'
 
 const CollectionPage = async ({ searchParams }: any) => {
-  const products = await getProducts(searchParams)
+  const {products, pagination} = await getProducts(searchParams)
+
+  console.log(pagination)
 
   return (
     <div className='collection'>
@@ -19,7 +21,12 @@ const CollectionPage = async ({ searchParams }: any) => {
             <div style={{width: '100%'}}>
               <CollectionTopbar />
               <ProductGrid products={products}/>
-              <Pagination />
+              <Pagination 
+                hasPrevPage = {pagination.hasPrevPage}
+                hasNextPage = {pagination.hasNextPage}
+                pageCount = {pagination.pageCount}
+                currentPage= {pagination.currentPage}
+              />
             </div>
           </div>
         </div>

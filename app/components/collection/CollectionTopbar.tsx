@@ -27,13 +27,14 @@ const Categories = [
 ]
 
 const options = [
-    { value: 'apple', label: 'Apple' },
-    { value: 'banana', label: 'Banana' },
-    { value: 'cherry', label: 'Cherry' }
+    { value: 10, label: 10 },
+    { value: 25, label: 25 },
+    { value: 50, label: 50 }
   ];
 
 const CollectionTopbar = () => {
   const [activeCategory, setActiveCategory] = useState<string | null>(null)
+  const [perPage, setPerPage] = useState<number | string>(10)
 
   const router = useRouter()
   const params = useSearchParams()
@@ -51,7 +52,9 @@ const CollectionTopbar = () => {
 
     const updatedQuery: any = {
         ...currentQuery,
-        category: activeCategory
+        category: activeCategory,
+        page: 1,
+        perPage
     }
 
     if (params?.get('category') === activeCategory) {
@@ -64,7 +67,7 @@ const CollectionTopbar = () => {
     }, { skipNull: true });
   
     router.push(url);
-  }, [activeCategory])
+  }, [activeCategory, perPage])
 
   return (
     <div className='collection-topbar'>
@@ -78,7 +81,7 @@ const CollectionTopbar = () => {
                     return <Tab key={item.label} label={item.label} value={item.value} active={activeCategory === item.value} onClick={() => handleCategorySelect(item.value)} />
                 })}
             </div>
-            <Dropdown options={options} />
+            <Dropdown options={options} getValue={setPerPage} />
         </div>
     </div>
   )
