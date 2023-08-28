@@ -1,4 +1,6 @@
+import { useCart } from '@/app/context/Cart/cart.context'
 import { useUI } from '@/app/context/ui.context'
+import { SafeProduct } from '@/app/types'
 import { fadeInOut } from '@/utils/motion/fade-in-out'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
@@ -9,8 +11,8 @@ import EmptyCart from './EmptyCart'
 
 
 const Cart = () => {
-  const isEmpty = false
   const { closeCart } = useUI()
+  const { items, isEmpty, total } = useCart()
 
   return (
     <div className='cart'>
@@ -22,16 +24,16 @@ const Cart = () => {
             {!isEmpty ? (
                 <Scrollbar className="cart-scrollbar w-full flex-grow">
                     <div className="cart-items__list w-full px-5 md:px-7">
-                        {/* {items?.map((item) => (
+                        {items?.map((item: SafeProduct) => (
                             <CartItem item={item} key={item.id} />
-                            ))} */}
+                            ))}
+                        {/* <CartItem item={{}} key={Math.random()} />
                         <CartItem item={{}} key={Math.random()} />
                         <CartItem item={{}} key={Math.random()} />
                         <CartItem item={{}} key={Math.random()} />
                         <CartItem item={{}} key={Math.random()} />
                         <CartItem item={{}} key={Math.random()} />
-                        <CartItem item={{}} key={Math.random()} />
-                        <CartItem item={{}} key={Math.random()} />
+                        <CartItem item={{}} key={Math.random()} /> */}
                     </div>
                 </Scrollbar>
             ) : (
@@ -41,7 +43,7 @@ const Cart = () => {
                     animate="to"
                     exit="from"
                     variants={fadeInOut(0.25)}
-                    className="px-5 md:px-7 pt-8 pb-5 flex justify-center flex-col items-center"
+                    className="empty-cart px-5 md:px-7 pt-8 pb-5 flex justify-center flex-col items-center"
                 >
                     <EmptyCart />
                     <h3 className="text-lg text-heading font-bold pt-8">
@@ -55,17 +57,18 @@ const Cart = () => {
             className="cart__footer flex flex-col px-5 md:px-7 pt-2 pb-5 md:pb-7"
             onClick={closeCart}
         >
-            <div
+            <button
                 // href={isEmpty === false ? '/checkout' : "/"}
                 className={"cart__checkout"}
+                disabled={isEmpty}
             >
                 <div>
                     Proceed To Checkout
                 </div>
                 <span>
-                    $588.00
+                    ${total}
                 </span>
-            </div>
+            </button>
         </div>
     </div>
   )

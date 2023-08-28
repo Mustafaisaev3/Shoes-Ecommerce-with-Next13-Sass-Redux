@@ -43,7 +43,7 @@ const Drawer: React.FC<DrowerProps> = ({
 
 	return (
 		<Portal>
-			{/* <AnimatePresence mode="sync"> */}
+			<AnimatePresence mode="sync">
                     {open ? (
                         <motion.div
                             ref={drawerRootRef}
@@ -73,7 +73,7 @@ const Drawer: React.FC<DrowerProps> = ({
                             </motion.div>
                         </motion.div>
                     ) : null}
-			{/* </AnimatePresence> */}
+			</AnimatePresence>
 		</Portal>
 	);
 };

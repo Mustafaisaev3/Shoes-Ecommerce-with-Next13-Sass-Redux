@@ -15,6 +15,7 @@
         position: relative;
         overflow: hidden;
         border-radius: $rounded-md;
+        cursor: pointer;
 
         & > img {
             object-fit: contain;

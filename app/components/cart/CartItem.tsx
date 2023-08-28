@@ -5,13 +5,15 @@ import { IoIosCloseCircle } from "react-icons/io";
 import Counter from "../common/Counter";
 import { fadeInOut } from "@/utils/motion/fade-in-out";
 import { generateCartItemName } from "@/utils/generate-cart-item-name";
+import { SafeProduct } from "@/app/types";
+import { useCart } from "@/app/context/Cart/cart.context";
 
 type CartItemProps = {
-	item?: any;
+	item?: SafeProduct;
 };
 
 const CartItem: React.FC<CartItemProps> = ({ item }) => {
-
+	const { removeItemFromCart } = useCart()
 	return (
 		<motion.div
 			layout
@@ -24,19 +26,18 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
 		>
 			<div className="cart-item__image">
 				<Image
-					src={item?.image ?? "/images/HeroSlider/air1.png"}
+					src={item?.images[0] ?? "/images/HeroSlider/air1.png"}
 					width={112}
 					height={112}
 					loading="eager"
-					alt={item.name || "Product Image"}
-					className="bg-gray-300 object-cover"
+					alt={item?.name || "Product Image"}
 				/>
 				<div
 					className="cart-item__delete"
-					onClick={() => {}}
+					onClick={() => removeItemFromCart(item?.ID)}
 					role="button"
 				>
-					<IoIosCloseCircle color="white" className="relative text-white text-2xl transform md:scale-0 md:opacity-0 transition duration-300 ease-in-out md:group-hover:scale-100 md:group-hover:opacity-100" />
+					<IoIosCloseCircle size={30} color="white"/>
 				</div>
 			</div>
 
@@ -45,7 +46,7 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
 					href={`/`}
 					className="cart-item__link"
 				>
-					{generateCartItemName("Nike AirMax", {name: 'alex', size: 'XXL'})}
+					{generateCartItemName(item?.name!, item?.options!)}
 				</Link>
 				<span className="cart-item__unit-price text-sm text-gray-400 mb-2.5">
                     Unit Price: 200$
@@ -59,7 +60,7 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
 						variant="dark"
 					/>
 					<span className="cart-item__total font-semibold text-sm md:text-base text-heading leading-5">
-						500$
+						{item?.salePrice ? item?.salePrice : item?.price}$
 					</span>
 				</div>
 			</div>

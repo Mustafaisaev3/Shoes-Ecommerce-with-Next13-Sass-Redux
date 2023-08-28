@@ -19,7 +19,9 @@ export type SafeProduct = Omit<Product, 'properties'> & {
         gender: string,
         release_date: string,
     },
-    color: String[]
+    color: String[],
+    options?: string[],
+    ID: string
 }
 
 type Variation = {

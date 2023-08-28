@@ -22,6 +22,7 @@ model User {
   updatedAt       DateTime  @updatedAt
   favoriteIds     String[]  @db.ObjectId
   orders          Order[]
+  // cart            Cart?
 
   accounts Account[]
 }
@@ -59,6 +60,9 @@ model Product {
   color             String[]
   properties        Json
 
+  // cart             Cart   @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  // cartId           String  @db.ObjectId
+
   orderProducts     OrderProduct[]
 }
 
@@ -71,7 +75,6 @@ model Order {
   address           String
   delivered         Boolean
   status            Status @default(Created)
-
 }
 
 model OrderProduct {
@@ -90,6 +93,15 @@ enum Status {
   Failed
   Paid
 }
+
+// model Cart {
+//   id                String @id @default(auto()) @map("_id") @db.ObjectId
+//   customer          User @relation(fields: [customerId], references: [id])
+//   customerId        String @db.ObjectId  @unique 
+//   orderProducts     Product[]
+//   total             Int
+
+// }
 
 // include: {
 //   user: true

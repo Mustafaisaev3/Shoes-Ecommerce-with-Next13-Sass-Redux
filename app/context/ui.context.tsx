@@ -1,6 +1,7 @@
 'use client'
 
 import React, { PropsWithChildren } from "react";
+import { CartProvider } from "./Cart/cart.context";
 
 export enum ModalViewTypes {
   REGISTER_VIEW = 'REGISTER_VIEW',
@@ -355,5 +356,7 @@ export const useUI = () => {
 };
 
 export const ManagedUIContext: React.FC<PropsWithChildren> = ({ children }) => (
+  <CartProvider>
     <UIProvider>{children}</UIProvider>
+  </CartProvider>
 );

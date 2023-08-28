@@ -8,13 +8,23 @@ import { ModalViewTypes } from "@/app/context/ui.context"
 import getCurrentUser from "@/app/actions/getCurrentUser"
 import UserMenu from "./UserMenu"
 import { SafeUser } from "@/app/types"
+import { useCart } from "@/app/context/Cart/cart.context"
+// import Badge from "../UI/Badge"
+import dynamic from "next/dynamic"
+
+const BadgeComp = dynamic(
+  () => import('../UI/Badge'),
+{ssr: false}
+);
 
 interface NavUserInfoProps {
   currentUser: SafeUser | null
 }
 
+
 const NavUserInfo: React.FC<NavUserInfoProps> = ({ currentUser }) => {
   const { openDrawer, openModal, setModalView } = useUI()
+  const { totalItems } = useCart()
 
   const handleCartClick = () => {
     return openDrawer()
@@ -27,7 +37,10 @@ const NavUserInfo: React.FC<NavUserInfoProps> = ({ currentUser }) => {
 
   return (
     <div className="navbar__user-info">
-        <Button title="Cart" rightIcon={HiOutlineShoppingBag} className='btn__secondary' onClick={handleCartClick} />
+        <div style={{position: 'relative'}}>
+          <Button title="Cart" rightIcon={HiOutlineShoppingBag} className='btn__secondary' onClick={handleCartClick} />
+          <BadgeComp text={totalItems} />
+        </div>
         {/* <Button title="Login" rightIcon={BiUser} className='btn__secondary' onClick={handleAuthClick} /> */}
         <UserMenu currentUser={currentUser} />
     </div>
