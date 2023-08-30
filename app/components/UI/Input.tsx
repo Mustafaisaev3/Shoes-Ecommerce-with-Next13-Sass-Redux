@@ -1,14 +1,16 @@
 'use client'
 
+import { InputHTMLAttributes } from "react"
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form"
 
-interface InputProps {
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     id: string,
     label: string,
     type?: string,
     disabled?: boolean,
     required?: boolean,
-    register: UseFormRegister<FieldValues>,
+    // register: UseFormRegister<FieldValues>,
+    register: any,
     errors: FieldErrors
 }
 
@@ -19,7 +21,8 @@ const Input: React.FC<InputProps> = ({
     disabled,
     required,
     register,
-    errors 
+    errors ,
+    ...rest
 }) => {
   return (
     <div className="input">
@@ -31,6 +34,7 @@ const Input: React.FC<InputProps> = ({
             style={{
                 border: `1px solid ${errors[id] ? '#ff5050' : '#262626'}`
             }}
+            {...rest}
         />
         <label 
             style={{

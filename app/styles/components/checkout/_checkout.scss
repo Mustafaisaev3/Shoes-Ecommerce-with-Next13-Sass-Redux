@@ -1,0 +1,46 @@
+.checkout {
+    width: 500px;
+    height: auto;
+    background-color: white;
+    border-radius: 10px;
+
+    &__header {
+        width: $full;
+        height: 60px;
+        font-size: $text-lg;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        border-bottom: 1px solid $color-main;
+    }
+
+    &__content {
+        width: $full;
+        height: $full;
+        padding: 20px;
+    }
+
+    &__body{
+        padding: 20px;
+        padding-top: 0;
+
+        & > div {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            gap: $gap-15
+        }
+    }  
+    
+    &__actions-container {
+        width: $full;
+        height: auto;
+        display: flex;
+        gap: $gap-20;
+
+        & button {
+            width: $full;
+        }
+    }
+}

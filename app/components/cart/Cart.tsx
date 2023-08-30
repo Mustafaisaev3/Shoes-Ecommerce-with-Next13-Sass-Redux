@@ -1,5 +1,5 @@
 import { useCart } from '@/app/context/Cart/cart.context'
-import { useUI } from '@/app/context/ui.context'
+import { ModalViewTypes, useUI } from '@/app/context/ui.context'
 import { SafeProduct } from '@/app/types'
 import { fadeInOut } from '@/utils/motion/fade-in-out'
 import { motion } from 'framer-motion'
@@ -11,8 +11,14 @@ import EmptyCart from './EmptyCart'
 
 
 const Cart = () => {
-  const { closeCart } = useUI()
+  const { closeDrawer, openModal, setModalView } = useUI()
   const { items, isEmpty, total } = useCart()
+
+  const handleCheckoutProceed = () => {
+    setModalView(ModalViewTypes.CHECKOUT_VIEW)
+    closeDrawer()
+    openModal()
+  }
 
   return (
     <div className='cart'>
@@ -55,12 +61,12 @@ const Cart = () => {
 
         <div
             className="cart__footer flex flex-col px-5 md:px-7 pt-2 pb-5 md:pb-7"
-            onClick={closeCart}
         >
             <button
                 // href={isEmpty === false ? '/checkout' : "/"}
                 className={"cart__checkout"}
                 disabled={isEmpty}
+                onClick={handleCheckoutProceed}
             >
                 <div>
                     Proceed To Checkout

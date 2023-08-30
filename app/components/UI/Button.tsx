@@ -12,13 +12,14 @@ interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
     size?: 'sm' | 'md' | 'lg',
     width?: string,
     height?: string,
-    type?: "button" | "submit" | "reset"
+    type?: "button" | "submit" | "reset",
+    disabled?: boolean
 }
 
 
-const Button: React.FC<ButtonProps> = ({ title, onClick, size = 'md', width, height, icon: Icon, leftIcon: LeftIcon, rightIcon: RightIcon, type='button', className }) => {
+const Button: React.FC<ButtonProps> = ({ title, onClick, size = 'md', width, height, icon: Icon, leftIcon: LeftIcon, rightIcon: RightIcon, type='button', disabled, className }) => {
   return (
-    <button className={`btn ${className} ${size}`} style={{width, height}} onClick={onClick} type={type}>
+    <button className={`btn ${className} ${size}`} style={{width, height}} onClick={onClick} type={type} disabled={disabled}>
         {LeftIcon && <LeftIcon size={18} />}
         {title && title}
         {Icon && <Icon size={18} />}

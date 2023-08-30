@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { signIn } from 'next-auth/react'
 import { FcGoogle } from 'react-icons/fc'
 import { AiFillGithub } from 'react-icons/ai'
@@ -44,6 +44,7 @@ const Login = () => {
       }
     })
   }
+
 
   return (
     <div className="login">

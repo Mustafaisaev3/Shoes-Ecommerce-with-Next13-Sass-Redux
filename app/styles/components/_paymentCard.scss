@@ -1,0 +1,136 @@
+.payment-card__container {
+    width: 400px;
+    height: 230px;
+    perspective: 1000px;
+    &:hover > .payment-card__wrapper {
+        transform: rotateY(180deg);
+    }
+}
+
+.payment-card__container:hover > .payment-card {
+    cursor: pointer;
+    transform: rotateY(180deg);
+}
+
+.payment-card.active {
+    cursor: pointer;
+    transform: rotateY(180deg);
+}
+
+.payment-card {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    transition: transform 1500ms;
+    transform-style: preserve-3d;
+
+    .front, .back {
+        width: $full;
+        height: $full;
+        border-radius: $rounded-xl;
+        padding: 25px;
+        position: absolute;
+        background: $bg-dark;
+        overflow: hidden;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        backface-visibility: hidden;
+
+        .payment-card__inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .payment-card__img {
+            width: $full;
+            height: $full;
+            position: absolute;
+            top: 0;
+            left: 0;
+            filter: opacity(40%);
+        }
+    }
+
+    &.front {
+        .payment-card__header {
+            display: flex;
+            justify-content: space-between;
+    
+            .chip {
+                width: 50px;
+            }
+    
+            .company {
+                // width: 70px;
+                height: 30px;
+            }
+        }
+    
+        .payment-card__content{
+            width: $full;
+            height: $full;
+            font-size: 25px;
+            font-weight: 700;
+            padding: 30px 0;
+            color: white;
+        }
+        
+        .payment-card__footer {
+            display: flex;
+            justify-content: space-between;
+            color: white;
+    
+            & p {
+                font-size: 12px;
+                padding-bottom: 5px;
+            }
+            & h2 {
+                font-size: 18px;
+            }
+        }
+        
+    }
+
+    &.back {
+        padding: 20px 0;
+        transform: rotateY(180deg);
+
+        & .black-line {
+            width: $full;
+            height: 50px;
+            background: rgb(17, 17, 17);
+        }
+
+        & .zip-code {
+            width: $full;
+            display: flex;
+            padding: 30px 10px;
+            
+            & > span {
+                width: 60%;
+                height: 40px;
+                background-color: white;
+                display: flex;
+                flex-direction: column;
+                gap: $gap-5;
+
+                & .line {
+                    width: 100%;
+                    height: 1px;
+                    background-color: rgba(255, 123, 123, 0.383);
+                }
+            }
+
+            & div {
+                color: $color-main;
+                margin: 0px 10px;
+                padding: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: white;
+                border-radius: 5px;
+            }
+        }
+    }
+}
+
