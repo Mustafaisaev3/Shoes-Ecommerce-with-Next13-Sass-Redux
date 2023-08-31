@@ -19,7 +19,6 @@ const Cart = () => {
     closeDrawer()
     openModal()
   }
-
   return (
     <div className='cart'>
         <div className='cart__header'>

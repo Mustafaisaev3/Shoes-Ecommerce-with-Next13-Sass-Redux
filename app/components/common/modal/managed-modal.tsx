@@ -9,14 +9,18 @@ import Checkout from "./views/Checkout";
 
 import { ModalViewTypes } from "@/app/context/ui.context";
 
-const ManagedModal: React.FC = () => {
+type ManagedModalTypes = {
+	user: any
+}
+
+const ManagedModal: React.FC<ManagedModalTypes> = ({ user }) => {
 	const { displayModal, closeModal, modalView } = useUI();
 
 	return (
 		<Modal open={displayModal} onClose={closeModal}>
 			{modalView === ModalViewTypes.REGISTER_VIEW && <Register />}
 			{modalView === ModalViewTypes.LOGIN_VIEW && <Login />}
-			{modalView === ModalViewTypes.CHECKOUT_VIEW && <Checkout />}
+			{modalView === ModalViewTypes.CHECKOUT_VIEW && <Checkout user={user} />}
 		</Modal>
 	);
 };

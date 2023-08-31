@@ -2,7 +2,7 @@
 
 import React, { PropsWithChildren, useMemo, useReducer, createContext, useContext } from "react";
 import { Product } from "@prisma/client";
-import { SafeProduct } from "@/app/types";
+import { SafeProduct, CartTypes } from "@/app/types";
 
 let cartFromLocalstorageAsString
 
@@ -13,18 +13,18 @@ if (typeof window !== 'undefined') {
 
 
 
-export interface State {
-    items: SafeProduct[]
-    isEmpty: boolean;
-    totalItems: number;
-    total: number;
-}
+// export interface State {
+//     items: SafeProduct[]
+//     isEmpty: boolean;
+//     totalItems: number;
+//     total: number;
+// }
 
 
-let initialState: State
+let initialState: CartTypes
 
 if (cartFromLocalstorageAsString) {
-  const cartFromLocalstorage: State = JSON.parse(cartFromLocalstorageAsString)
+  const cartFromLocalstorage: CartTypes = JSON.parse(cartFromLocalstorageAsString)
 
   if (cartFromLocalstorage) {
     initialState = {
@@ -53,13 +53,14 @@ type Action =
   | { type: "ADD_TO_CART"; item: SafeProduct }
   | { type: "REMOVE_FROM_CART"; id: SafeProduct['ID'] }
   | { type: "UPDATE_ITEM_IN_CART"; id: SafeProduct['ID']; item: SafeProduct }
+  | { type: "GET_CART" }
   | { type: "RESET_CART" };
 
-export const CartContext = createContext<State | any>(initialState!);
+export const CartContext = createContext<CartTypes | any>(initialState!);
 
 CartContext.displayName = 'CartContext'
 let updatedCart = undefined
-function CartReducer(state: State, action: Action){
+function CartReducer(state: CartTypes, action: Action){
     switch (action.type) {
         case "ADD_TO_CART": {
           updatedCart = {
@@ -113,6 +114,11 @@ function CartReducer(state: State, action: Action){
 
           return updatedCart;
         }
+        case "GET_CART": {
+          return {
+            ...state,
+          };
+        }
         case "RESET_CART": {
           return {
             ...state,
@@ -136,6 +142,8 @@ export const CartProvider: React.FC<PropsWithChildren> = (props) => {
         dispatch({ type: "REMOVE_FROM_CART", id });
     const updateItemInCart = (id: SafeProduct["ID"], item: SafeProduct) =>
         dispatch({ type: "UPDATE_ITEM_IN_CART", id, item });
+    const getCart = () =>
+        dispatch({ type: "GET_CART" });
     const resetCart = () =>
         dispatch({ type: "RESET_CART" });
 
@@ -143,7 +151,8 @@ export const CartProvider: React.FC<PropsWithChildren> = (props) => {
         ...state,
         addItemToCart,
         removeItemFromCart,
-        resetCart
+        resetCart,
+        getCart
     }), [state])
 
     return <CartContext.Provider value={value} {...props} />

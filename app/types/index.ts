@@ -24,6 +24,13 @@ export type SafeProduct = Omit<Product, 'properties'> & {
     ID: string
 }
 
+export type CartTypes = {
+    items: SafeProduct[],
+    isEmpty: boolean,
+    totalItems: number,
+    total: number,
+}
+
 type Variation = {
     id: string,
     value: string,

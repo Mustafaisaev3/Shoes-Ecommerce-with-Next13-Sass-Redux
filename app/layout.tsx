@@ -34,10 +34,8 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-
   const currentUser = await getCurrentUser()
 
-  console.log(currentUser)
   return (
     <html lang="en">
       <body>
@@ -46,7 +44,7 @@ export default async function RootLayout({
           {children}
           <Footer />
           <ManagedZoomModal />
-          <ManagedModal />
+          <ManagedModal user={currentUser} />
           <ManagedDrawer />
           <ToasterProvider />
         </ManagedUIContext>

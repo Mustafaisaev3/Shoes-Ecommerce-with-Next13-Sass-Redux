@@ -8,6 +8,11 @@ import { useMemo, useState } from "react"
 import { FieldValues, useForm } from "react-hook-form"
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import axios from "axios"
+import toast from "react-hot-toast"
+import { useRouter } from "next/navigation"
+import { useUI } from "@/app/context/ui.context"
+import { useCart } from "@/app/context/Cart/cart.context"
 
 enum STEPS {
     CUSTOMER_INFO = 0,
@@ -30,8 +35,8 @@ interface ICheckoutFormValue {
 const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
 
 const schema = yup.object().shape({
-    firstName: yup.string().min(3).max(80).required('First Name is required'),
-    lustName: yup.string().min(8).max(32).required('Lust Name is required'),
+    firstName: yup.string().min(2).max(100).required('First Name is required'),
+    lustName: yup.string().min(2).max(100).required('Lust Name is required'),
     phone: yup.string().matches(phoneRegExp, 'Phone number is not valid'),
     cardNumber: yup.string().min(16).max(16).required(),
     cardHolderName: yup.string().min(2).max(80).required('Card Holder Name is required'),
@@ -41,14 +46,20 @@ const schema = yup.object().shape({
     postCode: yup.string().min(2).max(80).required('Card Holder Name is required'),
 });
 
-const Checkout = () => {
+const Checkout = ({ user }: any) => {
+    const router = useRouter()
     const [step, setStep] = useState<STEPS>(STEPS.CUSTOMER_INFO)
     const [rotateCard, setRotateCard] = useState<boolean>(false)
+    const { closeModal } = useUI()
+    const { items, isEmpty, totalItems, total, resetCart } = useCart()
+
+    console.log(user)
 
     const {
         register,
         handleSubmit,
         watch,
+        reset,
         formState: {
             errors,
         },
@@ -77,20 +88,6 @@ const Checkout = () => {
     const address = watch('address');
     const postCode = watch('postCode');
 
-    const onBack = () => {
-        if (step === 0) {
-            return
-        }
-        setStep(value => value - 1)
-    }
-    
-    const onNext = () => {
-        if (step === 2) {
-            return
-        }
-        setStep(value => value + 1)
-    }
-
     // Action Labels
     const actionLabel = useMemo(() => {
         if (step === STEPS.PAYMENT) {
@@ -110,13 +107,65 @@ const Checkout = () => {
 
     let bodyContent
 
-    const onSubmitHandler = (data: any) => {
-        console.log({ data });
-    };
-    
-    const func = () => {
-      console.log(errors);
+    const submitHandler = (data: any) => {
 
+        const OrderObject = {
+            customerId: user.id,
+            user: user.id,
+            address: '',
+            status: 'Created',
+            customer_info: {
+                firstName: data.firstName,
+                lustName: data.lustName,
+                phone: data.phone
+            },
+            shipping_info: {
+                address: data.address,
+                postCode: data.postCode
+            },
+            payment_info: {
+                cardNumber: cardNumber,
+                cardHolderName: cardHolderName,
+                expirationDate: expirationDate,
+                CVV: CVV
+            },
+            cart: {
+                items,
+                isEmpty,
+                totalItems,
+                total
+            }
+        }
+          
+      
+          axios.post('/api/checkout', OrderObject)
+          .then(() => {
+            toast.success('Order created!');
+            router.refresh();
+            reset();
+            setStep(STEPS.CUSTOMER_INFO)
+            resetCart()
+            closeModal();
+          })
+          .catch(() => {
+            toast.error('Something went wrong.');
+          })
+          .finally(() => {
+          })
+    };
+
+    const onBack = () => {
+        if (step === 0) {
+            return
+        }
+        setStep(value => value - 1)
+    }
+    
+    const onNext = () => {
+        if (step === STEPS.PAYMENT) {
+            return
+        }
+        setStep(value => value + 1)
     }
 
     if (step === STEPS.CUSTOMER_INFO) {
@@ -134,8 +183,8 @@ const Checkout = () => {
                 <Input label="Phone" id="phone" register={register} errors={errors}/>
             </div>
 
-            <Button className="btn btn-main" title={'card'} type='submit' width='100%' onClick={handleSubmit(onSubmitHandler)}/>
-            <Button className="btn btn-main" title={'errors'} type='submit' width='100%' onClick={func}/>
+            {/* <Button className="btn btn-main" title={'card'} type='submit' width='100%' onClick={handleSubmit(onSubmitHandler)}/>
+            <Button className="btn btn-main" title={'errors'} type='submit' width='100%' onClick={func}/> */}
             <div className="checkout__actions-container">
                 {secondaryActionLabel ? (
                     <Button className="btn btn-main" title={secondaryActionLabel} width='100%' onClick={onBack}/>
@@ -211,7 +260,7 @@ const Checkout = () => {
                     className="btn btn-main" 
                     title={actionLabel}  
                     width='100%' 
-                    onClick={onNext}
+                    onClick={handleSubmit(submitHandler)}
                     disabled={(!cardNumber || !cardHolderName || !expirationDate || !CVV) ? true : false}
                 />
             </div>
