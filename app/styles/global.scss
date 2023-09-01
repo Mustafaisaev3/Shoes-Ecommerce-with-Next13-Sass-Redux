@@ -3,9 +3,9 @@
         'abstracts/variables';
 
 @import 'base/animations',
-        'base/base',
         'base/typography',
-        'base/spacing';
+        'base/spacing',
+        'base/base';
 
 @import 'layout/footer',
         'layout/header';
@@ -42,6 +42,7 @@
         // Modal Views
         'components/modal/registerView',
         'components/modal/loginView',
+        'components/modal/orderInfoView',
 
         // Cart
         'components/cart/cart',
@@ -75,5 +76,6 @@
         'components/products/productCard';
 
 @import 'pages/products',
+        'pages/account',
         'pages/collection';
 

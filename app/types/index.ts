@@ -1,4 +1,4 @@
-import { User } from "@prisma/client";
+import { Order, User } from "@prisma/client";
 import { Product } from "@prisma/client"
 
 export type SafeUser = Omit<
@@ -22,6 +22,24 @@ export type SafeProduct = Omit<Product, 'properties'> & {
     color: String[],
     options?: string[],
     ID: string
+}
+
+export type SafeOrder = Omit<Order, 'customer_info' | 'shipping_info' | 'payment_info'> & {
+    customer_info: {
+        firstName: string,
+        lustName: string,
+        phone: string,
+    },
+    shipping_info: {
+        address: string,
+        postCode: string
+    },
+    payment_info: {
+        cardNumber: string,
+        cardHolderName: string,
+        expirationDate: string,
+        CVV: string,
+    }
 }
 
 export type CartTypes = {

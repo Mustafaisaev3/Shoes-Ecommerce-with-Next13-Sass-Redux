@@ -36,6 +36,50 @@
         }
     }
 
+    &__success {
+        background: $btn_bg_success;
+        color: $color-secondary;
+        border: 2px solid transparent;
+
+        &:hover {
+            background: $btn_bg_success;
+            color: $color-secondary;
+        }
+    }
+
+    &__danger {
+        background: $btn_bg_danger;
+        color: $color-secondary;
+        border: 2px solid transparent;
+
+        &:hover {
+            background: $btn_bg_danger;
+            color: $color-secondary;
+        }
+    }
+
+    &__info {
+        background: $btn_bg_info;
+        color: $color-secondary;
+        border: 2px solid transparent;
+
+        &:hover {
+            background: $btn_bg_info;
+            color: $color-secondary;
+        }
+    }
+
+    &__warning {
+        background: $btn_bg_warning;
+        color: $color-secondary;
+        border: 2px solid transparent;
+
+        &:hover {
+            background: $btn_bg_warning;
+            color: $color-secondary;
+        }
+    }
+
     &__bordered {
         background: $btn_bg_white;
         color: $color-main;

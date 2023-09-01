@@ -1,0 +1,114 @@
+.account {
+    width: $full;
+    height: auto;
+    padding-top: 80px;
+
+    &__inner {
+        padding: 40px 0px;
+    }
+
+    &-wrapper {
+        width: $full;
+        height: auto;
+        display: flex;
+    }
+
+    &-content {
+        width: 80%;
+    }
+}
+
+.account-sidebar {
+    width: 20%;
+
+    &__list {
+        width: $full;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: $gap-10;
+        padding-right: 20px;
+    }
+
+    &__item {
+        width: $full;
+        height: auto;
+        padding: 15px 20px;
+        color: $color-main;
+        border-radius: $rounded-md;
+        cursor: pointer;
+        font-size: $text-lg;
+        display: flex;
+        align-items: center;
+
+        & > span {
+            margin-right: 10px;
+        }
+
+        &.active {
+            // background-color: rgb(230, 230, 230);
+            background-color: rgb(239, 239, 239);
+        }
+    }
+}
+
+.account .orders {
+
+    &-grid {
+        width: $full;
+        height: auto;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: $gap-30;
+        row-gap: 50px;
+
+        .order-item {
+            width: $full;
+            height: 200px;
+            border-radius: $rounded-md;
+            background-color: $bg-secondary;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: $shadow-md;
+
+            &__header {
+                width: $full;
+                padding: 10px 10px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                background-color: rgba(119, 255, 0, 0.339);
+                
+            }
+            &__content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: $gap-10;
+                flex-grow: 1;
+                background-color: white;
+
+                & span {
+                    padding: 10px 15px;
+                    background-color: rgba(119, 255, 0, 0.339);
+                    color: $color-main;
+                    border-radius: $rounded-md;
+                }
+
+
+            }
+            &__footer {
+                padding: 10px 10px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                & .actions {
+                    display: flex;
+                    gap: $gap-10;
+                }
+            }
+        }
+    }
+}

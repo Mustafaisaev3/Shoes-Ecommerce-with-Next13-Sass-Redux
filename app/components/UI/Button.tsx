@@ -13,7 +13,7 @@ interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
     width?: string,
     height?: string,
     type?: "button" | "submit" | "reset",
-    disabled?: boolean
+    disabled?: boolean,
 }
 
 

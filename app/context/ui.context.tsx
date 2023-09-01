@@ -7,6 +7,7 @@ export enum ModalViewTypes {
   REGISTER_VIEW = 'REGISTER_VIEW',
   LOGIN_VIEW = 'LOGIN_VIEW',
   CHECKOUT_VIEW = 'CHECKOUT_VIEW',
+  ORDER_INFO_VIEW = 'ORDER_INFO_VIEW',
 }
 
 export interface State {

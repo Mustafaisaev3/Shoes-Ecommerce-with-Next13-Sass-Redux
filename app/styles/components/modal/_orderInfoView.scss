@@ -1,0 +1,55 @@
+.order-info {
+    width: 500px;
+    height: 400px;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+
+    &__header {
+        width: $full;
+        height: 60px;
+        font-size: $text-lg;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        border-bottom: 1px solid $color-main;
+    }
+
+    &__content {
+        width: $full;
+        height: $full;
+        padding: 20px;
+        overflow-y: auto;
+    }
+
+    & .orders-list {
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: $gap-15;
+
+        &__item {
+            display: flex;
+            gap: $gap-15;
+
+            &-info {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: $gap-5;
+            }
+        }
+    }
+
+    &__footer {
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: $text-lg;
+    }
+}

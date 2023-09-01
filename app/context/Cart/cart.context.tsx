@@ -120,6 +120,7 @@ function CartReducer(state: CartTypes, action: Action){
           };
         }
         case "RESET_CART": {
+          localStorage.removeItem('nike-cart')
           return {
             ...state,
             items: [],

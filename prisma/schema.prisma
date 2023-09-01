@@ -60,6 +60,8 @@ model Product {
   color             String[]
   properties        Json
 
+  createdAt       DateTime @default(now())
+
   // cartId            String? @db.ObjectId 
   // cart              Cart?   @relation(fields: [cartId], references: [id], onDelete: Cascade)
 
@@ -79,6 +81,8 @@ model Order {
   customer_info     Json
   shipping_info     Json
   payment_info      Json
+
+  createdAt       DateTime @default(now())
 }
 
 // model OrderProduct {

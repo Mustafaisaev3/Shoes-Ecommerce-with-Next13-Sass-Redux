@@ -5,6 +5,7 @@ import { useUI } from "@/app/context/ui.context";
 import Register from "./views/Register";
 import Login from "./views/Login";
 import Checkout from "./views/Checkout";
+import OrderInfo from "./views/OrderInfo";
 
 
 import { ModalViewTypes } from "@/app/context/ui.context";
@@ -21,6 +22,7 @@ const ManagedModal: React.FC<ManagedModalTypes> = ({ user }) => {
 			{modalView === ModalViewTypes.REGISTER_VIEW && <Register />}
 			{modalView === ModalViewTypes.LOGIN_VIEW && <Login />}
 			{modalView === ModalViewTypes.CHECKOUT_VIEW && <Checkout user={user} />}
+			{modalView === ModalViewTypes.ORDER_INFO_VIEW && <OrderInfo />}
 		</Modal>
 	);
 };
