@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from 'react'
 import { BsChevronUp, BsChevronDown, BsHeart } from 'react-icons/bs'
 import { motion } from 'framer-motion'
 import { useUI } from '@/app/context/ui.context'
+import HeartButton from '../../HeartButton'
+import { SafeProduct, SafeUser } from '@/app/types'
 
 const images = [
     'https://img.stadiumgoods.com/jordan-air-jordan-1-retro-high-og-unc-toe_19856413_45845000_2048.jpg',
@@ -16,7 +18,13 @@ const images = [
     // 'https://img.stadiumgoods.com/adidas-yeezy-yeezy-slide-bone-2022_18909670_45628653_2048.jpg',
 ]
 
-const ProductDetailsGallery = ({images}: any) => {
+type ProductDetailsGalleryTypes = {
+  product: SafeProduct,
+  currentUser: SafeUser | null
+}
+
+const ProductDetailsGallery: React.FC<ProductDetailsGalleryTypes> = ({ product, currentUser }) => {
+  const { images, id } = product
   const [activeIndex, setActiveIndex] = useState<number>(0)
   const [activeImage, setActiveImage] = useState<string>(images[activeIndex])
   const { openProductImgZoomModal, setProductImgZoomData } = useUI()
@@ -79,7 +87,8 @@ const ProductDetailsGallery = ({images}: any) => {
               onClick={handleOpenProductImgZoomModal}  
             />
             <div className='gallery__like-icon' >
-                <BsHeart size={25} />
+                {/* <BsHeart size={25} /> */}
+                <HeartButton currentUser={currentUser} productId={id} size={25} />
             </div>
         </div>
     </div>

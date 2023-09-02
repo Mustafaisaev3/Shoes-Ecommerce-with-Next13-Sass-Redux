@@ -3,8 +3,8 @@
 import { useState } from "react"
 import AccountContent from "./AccountContent"
 import AccountSidebar from "./AccountSidebar"
-import { Order } from "@prisma/client"
-import { SafeOrder } from "@/app/types"
+import { Order, Product } from "@prisma/client"
+import { SafeOrder, SafeProduct } from "@/app/types"
 
 export enum ACCOUNT_TABS {
     ORDERS = 'Orders',
@@ -13,16 +13,17 @@ export enum ACCOUNT_TABS {
 }
 
 type AccountClientTypes = {
-    orders: SafeOrder[] | null
+    orders: SafeOrder[] | null,
+    favoriteProducts: SafeProduct[] | null
 }
 
-const AccountClient: React.FC<AccountClientTypes> = ({ orders }) => {
+const AccountClient: React.FC<AccountClientTypes> = ({ orders, favoriteProducts }) => {
   const [activeTab, setActiveTab] = useState<ACCOUNT_TABS>(ACCOUNT_TABS.ORDERS)
 
   return (
     <div className="account-wrapper">
         <AccountSidebar activeTab={activeTab} setActiveTab={setActiveTab} />
-        <AccountContent activeTab={activeTab} orders={orders} />
+        <AccountContent activeTab={activeTab} orders={orders} favoriteProducts={favoriteProducts} />
     </div>
   )
 }

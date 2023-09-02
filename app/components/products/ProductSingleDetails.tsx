@@ -4,9 +4,14 @@ import { Product } from "@prisma/client"
 import SaleProsuctsSlider from "../sliders/SaleProsuctsSlider"
 import ProductDetailsGallery from "./gallery/ProductDetailsGallery"
 import ProductOptions from "./options/ProductOptions"
-import { SafeProduct } from "@/app/types"
+import { SafeProduct, SafeUser } from "@/app/types"
 
-const ProductSingleDetails = ({product}: {product: SafeProduct | null}) => {
+type ProductSingleDetails = {
+    product: SafeProduct | null,
+    currentUser: SafeUser | null
+}
+
+const ProductSingleDetails: React.FC<ProductSingleDetails> = ({ product, currentUser }) => {
   console.log(product)
   return (
     <>
@@ -15,7 +20,7 @@ const ProductSingleDetails = ({product}: {product: SafeProduct | null}) => {
                 <div className="product-details__inner">
                     <div className="product-details__top">
                         <div className="product-details__left">
-                            <ProductDetailsGallery images={product.images} />
+                            <ProductDetailsGallery currentUser={currentUser} product={product} />
                             <div className="product-details__description">
                                 <div className="product-details__description-title">PRODUCT DETAILS</div>
                                 <p className="product-details__description-content">

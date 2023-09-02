@@ -2,10 +2,12 @@ import CollectionFilters from '@/app/components/collection/CollectionFilters'
 import CollectionTopbar from '@/app/components/collection/CollectionTopbar'
 import Pagination from '@/app/components/Pagination'
 import ProductGrid from '@/app/components/products/ProductGrid'
+import getCurrentUser from '../actions/getCurrentUser'
 import getProducts from '../actions/getProducts'
 
 const CollectionPage = async ({ searchParams }: any) => {
   const {products, pagination} = await getProducts(searchParams)
+  const currentUser = await getCurrentUser()
 
   console.log(pagination)
 
@@ -20,7 +22,7 @@ const CollectionPage = async ({ searchParams }: any) => {
             <CollectionFilters />
             <div style={{width: '100%'}}>
               <CollectionTopbar />
-              <ProductGrid products={products}/>
+              <ProductGrid currentUser={currentUser} products={products}/>
               <Pagination 
                 hasPrevPage = {pagination.hasPrevPage}
                 hasNextPage = {pagination.hasNextPage}

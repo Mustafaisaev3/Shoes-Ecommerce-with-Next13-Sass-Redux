@@ -7,22 +7,31 @@ import Button from '../UI/Button';
 import { useState } from 'react'
 import Loader from '../Loader'
 import { Product } from '@prisma/client'
+import HeartButton from '../HeartButton'
+import { SafeUser } from '@/app/types'
+import { useUI } from '@/app/context/ui.context'
+import toast from 'react-hot-toast'
+import { useCart } from '@/app/context/Cart/cart.context'
 
 interface ProductCardProps {
     product: Product;
-    onAction?: (id: string) => void;
-    disabled?: boolean;
-    actionLabel?: string;
-    actionId?: string;
     width?: string,
     height?: string,
-    // currentUser?: SafeUser | null
+    currentUser?: SafeUser | null
   };
 
   
 
-const ProductCard: React.FC<ProductCardProps> = ({product ,onAction ,disabled ,actionLabel ,actionId ,width ,height}) => {
-  const [like, setLike] = useState(false)
+const ProductCard: React.FC<ProductCardProps> = ({product, currentUser, width, height}) => {
+
+  const { openDrawer } = useUI()
+  const { addItemToCart } = useCart()
+
+  const handleAddItemToCart = () => {
+    addItemToCart(product)
+    toast.success('Added to cart!')
+    openDrawer()
+  }
 
   return (
     <div 
@@ -35,11 +44,7 @@ const ProductCard: React.FC<ProductCardProps> = ({product ,onAction ,disabled ,a
           src={product.images[0]}
           alt="Product"
         />
-        {like ? (
-          <AiFillHeart size={22} className='product-card__heart' onClick={() => setLike(false)} />
-        ) : (
-          <AiOutlineHeart size={22} className='product-card__heart' onClick={() => setLike(true)} />
-        )}
+        <HeartButton currentUser={currentUser} productId={product.id} size={25} />
       </div>
       <div className="product-card__bottom">
         <div className='product-card__title'><a href={`/products/${product.id}`}>{product.name}</a></div>
@@ -50,7 +55,7 @@ const ProductCard: React.FC<ProductCardProps> = ({product ,onAction ,disabled ,a
             <span className='product-card__price-main'>${product.salePrice}</span>
           </div>
           <div className='product-card__btn'>
-            <Button icon={HiShoppingBag} size='sm' />
+            <Button icon={HiShoppingBag} size='sm' onClick={handleAddItemToCart} />
           </div>
         </div>
       </div>

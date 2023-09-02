@@ -6,6 +6,10 @@
     letter-spacing: 0.08rem;
 }
 
+body {
+    padding: 0 calc(20px - (100vw - 100%)) 0 0; 
+}
+
 ul {
     list-style: outside none none;
     margin: 0;
