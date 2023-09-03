@@ -87,6 +87,10 @@ const CollectionFilters: React.FC = () => {
     router.push(url);
   }, [filters])
 
+  const resetFilters = () => {
+    router.push('/collections');
+  }
+
   return (
     <div className='collection-filters'>
         <div className="collection-filters__header">
@@ -95,7 +99,7 @@ const CollectionFilters: React.FC = () => {
         <ColorFilter getColor={getColor}/>
         <SizeFilter getSize={getSize} />
         <PriceFilter getPrice={getPrice} />
-        <button className="btn btn-main " onClick={() => console.log(filters)}>filters</button>
+        <button className="btn btn-main " onClick={resetFilters}>Reset</button>
     </div>
   )
 }

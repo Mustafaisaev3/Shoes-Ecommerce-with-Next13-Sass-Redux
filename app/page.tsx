@@ -6,20 +6,26 @@ import Hero from "./components/hero/Hero";
 import NewsMarqueeSlider from "./components/NewsMarqueeSlider";
 import SaleProsuctsSlider from "./components/sliders/SaleProsuctsSlider";
 import PopularProsuctsSlider from "./components/sliders/PopularProsuctsSlider";
+import getPopularProducts from "./actions/sliders/getPopularProducts";
+import getSaleProducts from "./actions/sliders/getSaleProducts";
+import getCurrentUser from "./actions/getCurrentUser";
 
 
-export default function Home() {
+export default async function Home() {
+  const currentUser = await getCurrentUser()
+  const popularProducts = await getPopularProducts()
+  const saleProducts = await getSaleProducts()
   
   return (
     <>
       <Hero />
-      <Categories />
+      {/* <Categories /> */}
       <Discount />
-      <SaleProsuctsSlider />
+      <SaleProsuctsSlider currentUser={currentUser} saleProducts={saleProducts} />
       <NewsMarqueeSlider />
       <DoubleBanner />
       <SaleBanner />
-      <PopularProsuctsSlider />
+      <PopularProsuctsSlider currentUser={currentUser} popularProducts={popularProducts} />
     </>
   )
 }

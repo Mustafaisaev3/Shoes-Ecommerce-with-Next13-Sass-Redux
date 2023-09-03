@@ -1,9 +1,18 @@
+import { SafeUser, SliderWithProducts } from '@/app/types'
+import { User } from '@prisma/client'
 import React from 'react'
 import ProductSlider from '../products/ProductSlider'
 
-const SaleProsuctsSlider = () => {
+type SaleProsuctsSliderTypes = {
+  saleProducts: SliderWithProducts
+  currentUser: SafeUser | null
+}
+
+const SaleProsuctsSlider: React.FC<SaleProsuctsSliderTypes> = ({ saleProducts, currentUser }) => {
+  const title = saleProducts.title.split(' ')
+
   return (
-    <ProductSlider headingSetting={{title: 'Sale', spanword: 'Products', align: 'right', link: 'eheheh', linkTitle: 'Show More' }} />
+    <ProductSlider currentUser={currentUser} products={saleProducts} headingSetting={{title: title[0], spanword: title[1], align: 'right', link: saleProducts.link!, linkTitle: 'Show more' }} />
   )
 }
 

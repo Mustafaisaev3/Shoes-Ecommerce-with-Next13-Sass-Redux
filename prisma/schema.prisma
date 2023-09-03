@@ -12,19 +12,19 @@ datasource db {
 
 
 model User {
-  id              String    @id @default(auto()) @map("_id") @db.ObjectId
-  name            String?
-  email           String?   @unique
-  emailVerified   DateTime?
-  image           String?
-  hashedPassword  String?
-  createdAt       DateTime  @default(now())
-  updatedAt       DateTime  @updatedAt
-  favoriteIds     String[]  @db.ObjectId
-  orders          Order[]
+  id                 String    @id @default(auto()) @map("_id") @db.ObjectId
+  name               String?
+  email              String?   @unique
+  emailVerified      DateTime?
+  image              String?
+  hashedPassword     String?
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+  favoriteIds        String[]  @db.ObjectId
+  orders             Order[]
   // cart            Cart[]
 
-  accounts Account[]
+  accounts           Account[]
 }
 
 model Account {
@@ -60,7 +60,13 @@ model Product {
   color             String[]
   properties        Json
 
-  createdAt       DateTime @default(now())
+  createdAt         DateTime @default(now())
+
+  sliderIDs         String[] @db.ObjectId
+  sliders           Slider[]   @relation(fields: [sliderIDs], references: [id])
+
+  // slider            Slider @relation(fields: [sliderId], references: [id], onDelete: Cascade)
+  // sliderId          String @db.ObjectId
 
   // cartId            String? @db.ObjectId 
   // cart              Cart?   @relation(fields: [cartId], references: [id], onDelete: Cascade)
@@ -82,7 +88,17 @@ model Order {
   shipping_info     Json
   payment_info      Json
 
-  createdAt       DateTime @default(now())
+  createdAt         DateTime @default(now())
+}
+
+model Slider {
+  id                String @id @default(auto()) @map("_id") @db.ObjectId
+  title             String
+  link              String?
+  // key               String?
+  // products          Product[]
+  productIDs        String[] @db.ObjectId
+  products          Product[]   @relation(fields: [productIDs], references: [id])
 }
 
 // model OrderProduct {

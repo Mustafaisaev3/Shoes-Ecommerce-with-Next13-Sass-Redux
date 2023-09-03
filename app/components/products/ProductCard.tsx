@@ -18,9 +18,7 @@ interface ProductCardProps {
     width?: string,
     height?: string,
     currentUser?: SafeUser | null
-  };
-
-  
+  };  
 
 const ProductCard: React.FC<ProductCardProps> = ({product, currentUser, width, height}) => {
 
@@ -48,11 +46,21 @@ const ProductCard: React.FC<ProductCardProps> = ({product, currentUser, width, h
       </div>
       <div className="product-card__bottom">
         <div className='product-card__title'><a href={`/products/${product.id}`}>{product.name}</a></div>
-        <div className='product-card__rate'><HiStar size={20} color="#f1b44c" />(169 reviews)</div>
+        <div className='product-card__rate'><HiStar size={20} color="#f1b44c" />
+          <span style={{fontSize: '20px', fontWeight: 'bold', color: 'black', paddingLeft: '7px', paddingRight: '5px'}}>{product.rating}</span> /(169 reviews)
+        </div>
         <div className='product-card__actions'>
           <div className='product-card__price'>
-            <span className='product-card__price-old'>${product.price}</span>
-            <span className='product-card__price-main'>${product.salePrice}</span>
+            {product.salePrice ? (
+              <>
+                <span className='product-card__price-old'>${product.price}</span>
+                <span className='product-card__price-main'>${product.salePrice}</span>
+              </>
+            ) : (
+              <>
+                <span className='product-card__price-main'>${product.price}</span>
+              </>
+            )}
           </div>
           <div className='product-card__btn'>
             <Button icon={HiShoppingBag} size='sm' onClick={handleAddItemToCart} />

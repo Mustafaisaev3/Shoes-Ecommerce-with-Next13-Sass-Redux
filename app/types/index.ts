@@ -1,5 +1,6 @@
-import { Order, User } from "@prisma/client";
+import { Order, Slider, User } from "@prisma/client";
 import { Product } from "@prisma/client"
+import { Prisma } from "@prisma/client";
 
 export type SafeUser = Omit<
     User,
@@ -58,6 +59,11 @@ type Variation = {
     product: Product,
     // orderItem: ,
 }
+
+
+export type SliderWithProducts = Prisma.SliderGetPayload<{
+    include: { products: true }
+}>
 
 // export interface Product {
 //     _id: string,
