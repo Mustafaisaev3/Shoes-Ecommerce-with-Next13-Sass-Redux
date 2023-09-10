@@ -3,15 +3,17 @@
 import { useState } from 'react'
 import Accordion from '../../UI/Accordion'
 import ModalDropdown from '../../UI/ModalDropdown'
+import Button from '../../UI/Button'
 import Tab from '../../UI/Tab'
+
 import { MdGppGood, MdAssignmentReturn } from 'react-icons/md'
 import { FaTruck } from 'react-icons/fa'
-import Button from '../../UI/Button'
+
 import { SafeProduct } from '@/app/types'
 import ProductColors from '@/data/product-colors'
 import { useCart } from '@/app/context/Cart/cart.context'
-import toast from 'react-hot-toast'
 import { useUI } from '@/app/context/ui.context'
+import toast from 'react-hot-toast'
 
 const accItems = [
   {
@@ -95,8 +97,13 @@ const ProductOptions: React.FC<ProductOptionsTypes> = ({ product }) => {
           </div>
         </div>
         <div className='product-actions__submit'>
-          <Button className='btn-main' title='Add to Cart' width='100%' onClick={handleAddItemToCart} />
-          {/* <Button className='btn-main' title='Check' width='100%' onClick={() => console.log(items)} /> */}
+          <Button 
+            className='btn-main' 
+            title='Add to Cart' 
+            width='100%' 
+            onClick={handleAddItemToCart} 
+            disabled={(!size || !color) && true} 
+          />
         </div>
       </div>
       <Accordion items={accItems} />

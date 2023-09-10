@@ -7,7 +7,7 @@ import Favorites from "./favorites/Favorites"
 import Orders from "./orders/Orders"
 
 type AccountContentTypes = {
-    activeTab: ACCOUNT_TABS,
+    activeTab: string,
     orders: SafeOrder[] | null,
     favoriteProducts: SafeProduct[] | null,
 }

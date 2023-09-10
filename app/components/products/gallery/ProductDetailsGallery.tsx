@@ -87,7 +87,6 @@ const ProductDetailsGallery: React.FC<ProductDetailsGalleryTypes> = ({ product, 
               onClick={handleOpenProductImgZoomModal}  
             />
             <div className='gallery__like-icon' >
-                {/* <BsHeart size={25} /> */}
                 <HeartButton currentUser={currentUser} productId={id} size={25} />
             </div>
         </div>
