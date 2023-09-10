@@ -3,6 +3,7 @@ import getProductById from '@/app/actions/getProductById';
 import ProductSingleDetails from '@/app/components/products/ProductSingleDetails'
 import getCurrentUser from '@/app/actions/getCurrentUser';
 import { SafeProduct } from '@/app/types';
+import getRelatedProducts from '@/app/actions/sliders/getRelatedProducts';
 
 interface IParams {
   productId?: string;
@@ -11,13 +12,14 @@ interface IParams {
 
 const page = async ({ params }: { params: IParams }) => {
   const product = await getProductById(params);
+  const relatedProducts = await getRelatedProducts()
   const currentUser = await getCurrentUser();
 
   return (
     <div className='product-page'>
         <div className="container">
             <div className="product-page__inner">
-                <ProductSingleDetails currentUser={currentUser} product={product as SafeProduct} />
+                <ProductSingleDetails currentUser={currentUser} product={product as SafeProduct} relatedProducts={relatedProducts} />
             </div>
         </div>
     </div>

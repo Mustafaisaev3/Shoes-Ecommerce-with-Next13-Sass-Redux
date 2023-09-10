@@ -33,11 +33,13 @@ const options = [
   ];
 
 const CollectionTopbar = () => {
-  const [activeCategory, setActiveCategory] = useState<string | null>(null)
-  const [perPage, setPerPage] = useState<number | string>(10)
-
   const router = useRouter()
   const params = useSearchParams()
+
+  const category = params?.get('category') ? params?.get('category') : null
+  
+  const [activeCategory, setActiveCategory] = useState<string | null>(category)
+  const [perPage, setPerPage] = useState<number | string>(10)
 
   const handleCategorySelect = (category: string) => {
     setActiveCategory(category)

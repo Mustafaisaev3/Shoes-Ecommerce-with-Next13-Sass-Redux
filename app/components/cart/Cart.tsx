@@ -12,7 +12,7 @@ import EmptyCart from './EmptyCart'
 
 const Cart = () => {
   const { closeDrawer, openModal, setModalView } = useUI()
-  const { items, isEmpty, total } = useCart()
+  const { items, isEmpty, total, resetCart } = useCart()
 
   const handleCheckoutProceed = () => {
     setModalView(ModalViewTypes.CHECKOUT_VIEW)
@@ -74,6 +74,14 @@ const Cart = () => {
                     ${total}
                 </span>
             </button>
+            {/* <button
+                className={"cart__checkout"}
+                onClick={resetCart}
+            >
+                <div>
+                    Reset Cart
+                </div>
+            </button> */}
         </div>
     </div>
   )

@@ -1,17 +1,18 @@
 'use client'
 
 import { Product } from "@prisma/client"
-import SaleProsuctsSlider from "../sliders/SaleProsuctsSlider"
 import ProductDetailsGallery from "./gallery/ProductDetailsGallery"
 import ProductOptions from "./options/ProductOptions"
-import { SafeProduct, SafeUser } from "@/app/types"
+import { SafeProduct, SafeUser, SliderWithProducts } from "@/app/types"
+import RelatedProductsSlider from "../sliders/RelatedProductsSlider"
 
 type ProductSingleDetails = {
     product: SafeProduct | null,
-    currentUser: SafeUser | null
+    currentUser: SafeUser | null,
+    relatedProducts: SliderWithProducts
 }
 
-const ProductSingleDetails: React.FC<ProductSingleDetails> = ({ product, currentUser }) => {
+const ProductSingleDetails: React.FC<ProductSingleDetails> = ({ product, currentUser, relatedProducts }) => {
   console.log(product)
   return (
     <>
@@ -61,7 +62,7 @@ const ProductSingleDetails: React.FC<ProductSingleDetails> = ({ product, current
                             </ul>
                         </div>
                     </div>
-                    {/* <SaleProsuctsSlider /> */}
+                    <RelatedProductsSlider currentUser={currentUser} relatedProducts={relatedProducts} />
                 </div>
             </div>
         ) : null}
