@@ -63,7 +63,7 @@ export default async function getProducts(params: IProductParams) {
     const hasNextPage = end < products.length
     const hasPrevPage = start > 0
     const pageCount = Math.round(products.length / perPage)
-    const currentPage = parseInt(page)
+    const currentPage = parseInt(`${page}`)
 
     products = products.slice(start, end)
 

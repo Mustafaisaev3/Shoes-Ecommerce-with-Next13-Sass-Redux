@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import axios from "axios";
 import Container from '../Container'
 import ProductCard from '../products/ProductCard'
 import Heading from '../UI/Heading'
@@ -27,6 +28,22 @@ const tabsData = [
 
 const Categories = () => {
   const [activeCategory, setActiveCategory] = useState(tabsData[0].value)
+  const [products, setProducts] = useState<any>(null)
+
+  const fetchProductsByCategory = async () => {
+    try {
+        const { data } = await axios.get(`/api/products?category=${activeCategory}`)
+        setProducts(data.products)
+    } catch (error) {
+        console.log(error)
+        throw new Error('Internal Error')
+    }
+
+  }
+
+  useEffect(() => {
+    fetchProductsByCategory()
+  }, [activeCategory])
 
   return (
     <Container>
@@ -40,16 +57,9 @@ const Categories = () => {
                 </ul>
             </div>
             <div className='categories__content'>
-                <ProductCard data={'hello'} width={'100%'} />
-                <ProductCard data={'hello'} width={'100%'} />
-                <ProductCard data={'hello'} width={'100%'} />
-                <ProductCard data={'hello'} width={'100%'} />
-                <ProductCard data={'hello'} width={'100%'} />
-                <ProductCard data={'hello'} width={'100%'} />
-                <ProductCard data={'hello'} width={'100%'} />
-                <ProductCard data={'hello'} width={'100%'} />
-                <ProductCard data={'hello'} width={'100%'} />
-                <ProductCard data={'hello'} width={'100%'} />
+                {products && products.map((product: any) => {
+                    return <ProductCard product={product} width={'100%'} key={product.id} />
+                })}
             </div>
         </div>
     </Container>

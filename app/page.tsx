@@ -19,7 +19,7 @@ export default async function Home() {
   return (
     <>
       <Hero />
-      {/* <Categories /> */}
+      <Categories products={popularProducts}/>
       <Discount />
       <SaleProsuctsSlider currentUser={currentUser} saleProducts={saleProducts} />
       <NewsMarqueeSlider />
