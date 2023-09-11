@@ -10,6 +10,11 @@ export enum ModalViewTypes {
   ORDER_INFO_VIEW = 'ORDER_INFO_VIEW',
 }
 
+type ConfirmationModalTypes = {
+  question: string,
+  action: () => any
+}
+
 export interface State {
 
   displayProductImgZoom: boolean;
@@ -17,12 +22,14 @@ export interface State {
   displaySidebar: boolean;
   displayFilter: boolean;
   displayModal: boolean;
+  displayConfirmationModal: boolean;
   displayCart: boolean;
   displaySearch: boolean;
   modalView: string;
   productImgZoom: string;
   productImgZoomData: string[];
   modalData: any;
+  modalConfirmationData: ConfirmationModalTypes | null;
   drawerView: string | null;
   toastText: string;
 }
@@ -33,6 +40,7 @@ const initialState = {
   displaySidebar: false,
   displayFilter: false,
   displayModal: false,
+  displayConfirmationModal: false,
   displayCart: false,
   displaySearch: false,
   modalView: ModalViewTypes.REGISTER_VIEW,
@@ -40,6 +48,7 @@ const initialState = {
   drawerView: "CART_VIEW",
   productImgZoomData: [],
   modalData: null,
+  modalConfirmationData: null,
   toastText: "",
 };
 
@@ -89,6 +98,13 @@ type Action =
     }
   | {
       type: "CLOSE_MODAL";
+    }
+  | {
+      type: "OPEN_CONFIRMATION_MODAL";
+      data: ConfirmationModalTypes;
+    }
+  | {
+      type: "CLOSE_CONFIRMATION_MODAL";
     }
   | {
       type: "OPEN_PRODUCT_IMG_ZOOM_MODAL";
@@ -204,6 +220,19 @@ function uiReducer(state: State, action: Action) {
         displayModal: false,
       };
     }
+    case "OPEN_CONFIRMATION_MODAL": {
+      return {
+        ...state,
+        displayConfirmationModal: true,
+        modalConfirmationData: action.data
+      };
+    }
+    case "CLOSE_CONFIRMATION_MODAL": {
+      return {
+        ...state,
+        displayConfirmationModal: false,
+      };
+    }
     case "OPEN_PRODUCT_IMG_ZOOM_MODAL": {
       return {
         ...state,
@@ -302,6 +331,9 @@ export const UIProvider: React.FC<PropsWithChildren> = (props) => {
   const openSearch = () => dispatch({ type: "OPEN_SEARCH" });
   const closeSearch = () => dispatch({ type: "CLOSE_SEARCH" });
 
+  const openConfirmationModal = (data: ConfirmationModalTypes) => dispatch({ type: "OPEN_CONFIRMATION_MODAL", data });
+  const closeConfirmationModal = () => dispatch({ type: "CLOSE_CONFIRMATION_MODAL" });
+
   const setUserAvatar = (_value: string) =>
     dispatch({ type: "SET_USER_AVATAR", value: _value });
 
@@ -331,6 +363,8 @@ export const UIProvider: React.FC<PropsWithChildren> = (props) => {
       closeFilter,
       openModal,
       closeModal,
+      openConfirmationModal,
+      closeConfirmationModal,
       openDrawer,
       closeDrawer,
       openProductImgZoomModal,

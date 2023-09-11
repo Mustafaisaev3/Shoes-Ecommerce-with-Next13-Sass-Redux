@@ -4,7 +4,7 @@ import Button from "../../UI/Button"
 import { MdClose, MdDelete, MdInfo } from 'react-icons/md'
 import { useUI } from "@/app/context/ui.context"
 import { ModalViewTypes } from "@/app/context/ui.context";
-import axios from "axios"
+import axios from "axios";
 import toast from "react-hot-toast"
 import { useRouter } from "next/navigation"
 import { SafeOrder } from "@/app/types"
@@ -15,7 +15,7 @@ type OrderItemTypes = {
 }
 
 const OrderItem: React.FC<OrderItemTypes> = ({ data }) => {
-  const { openModal, closeModal, setModalView, setModalData } = useUI()
+  const { openModal, closeModal, setModalView, setModalData, openConfirmationModal } = useUI()
   const router = useRouter()
 
   const handleOrderInfiModal = () => {
@@ -24,7 +24,7 @@ const OrderItem: React.FC<OrderItemTypes> = ({ data }) => {
     return openModal()
   }
 
-  const handleDeleteOrder = async () => {
+  const deleteOrder = async () => {
     try {
         axios.delete(`/api/order/${data.id}`)
           .then(() => {
@@ -40,6 +40,10 @@ const OrderItem: React.FC<OrderItemTypes> = ({ data }) => {
     } catch (error) {
         toast.error('Something went wrong.');
     }
+  }
+
+  const handleDeleteOrder = () => {
+    openConfirmationModal({question: `You want to delete the order: ${data.id}?`, action: deleteOrder})
   }
 
   return (

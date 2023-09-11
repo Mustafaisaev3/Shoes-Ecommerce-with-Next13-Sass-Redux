@@ -11,6 +11,7 @@ import { ManagedUIContext } from '@/app/context/ui.context';
 import ToasterProvider from '@/providers/ToasterProvider';
 import getCurrentUser from './actions/getCurrentUser';
 import getProducts from './actions/getProducts';
+import ConfirmationModal from './components/common/confirmationModal/ConfirmationModal';
 
 const ManagedDrawer = dynamic(
   () => import('@/app/components/common/drawer/managed-drawer'),
@@ -46,6 +47,7 @@ export default async function RootLayout({
           <ManagedZoomModal />
           <ManagedModal user={currentUser} />
           <ManagedDrawer />
+          <ConfirmationModal />
           <ToasterProvider />
         </ManagedUIContext>
       </body>

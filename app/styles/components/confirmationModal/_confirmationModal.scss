@@ -1,0 +1,72 @@
+.confirmation-modal-wrapper {
+    width: $full;
+    height: $full;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.421);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .confirmation-modal {
+        width: auto;
+        height: auto;
+        position: relative;
+
+        &__close {
+            height: 60px;
+            width: auto;
+            padding: 20px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        &__container {
+            width: 400px;
+            height: 300px;
+            background: white;
+            border-radius: $rounded-md;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+
+            & > div {
+                width: $full;
+                flex-grow: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            & .actions {
+                width: $full;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: $gap-20;
+                flex-grow: 0;
+            }
+        }
+
+        .title {
+            font-size: $text-xl;
+            font-weight: 700;
+            color: $color-main;
+            padding-bottom: 5px;
+        }
+        .subtitle {
+            font-size: $text-base;
+            font-weight: 500;
+            color: gray;
+        }
+    }
+}
