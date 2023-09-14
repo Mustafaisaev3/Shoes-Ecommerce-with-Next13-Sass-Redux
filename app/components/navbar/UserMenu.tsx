@@ -7,7 +7,7 @@ import { signOut } from 'next-auth/react'
 import { SafeUser } from '@/app/types'
 import { useRouter } from 'next/navigation'
 import { ModalViewTypes, useUI } from '@/app/context/ui.context'
-import { BiUser } from 'react-icons/bi'
+import { BiUser, BiMenu } from 'react-icons/bi'
 import Button from '../UI/Button'
 import useOnClickOutside from '@/app/hooks/useOnClickOitside'
 
@@ -20,7 +20,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
   const router = useRouter()
   const [isOpen, setIsOpen] = useState(false)
 
-  const { openModal, setModalView } = useUI()
+  const { openModal, setModalView, openMobileMenu } = useUI()
   
   const toggleOpen = useCallback(() => {
     setIsOpen(value => !value)
@@ -47,10 +47,11 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                     <Avatar src={currentUser?.image} />
                 </div> */}
                 {currentUser ? (
-                    <Button title={currentUser.name!} rightIcon={BiUser} className='btn__secondary' />
+                    <Button title={currentUser.name!} rightIcon={BiUser} className='btn__secondary user-btn' />
                 ) : (
-                    <Button title="Login" rightIcon={BiUser} className='btn__secondary' />
+                    <Button title="Login" rightIcon={BiUser} className='btn__secondary user-btn' />
                 )}
+                {/* <Button rightIcon={BiMenu} className='btn__secondary user-btn' onClick={openMobileMenu} /> */}
             </div>
         </div>
         {isOpen ? (

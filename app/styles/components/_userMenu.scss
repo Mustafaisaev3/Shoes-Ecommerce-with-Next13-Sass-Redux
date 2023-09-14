@@ -7,6 +7,11 @@
         align-items: center;
         gap: $gap-20;
 
+        &-inner {
+            display: flex;
+            gap: $gap-20;
+        }
+
         // &-inner {
         //     display: flex;
         //     align-items: center;
@@ -49,5 +54,11 @@
                 background-color: #f8f8fa;
             }
         }
+    }
+}
+
+.user-btn .btn-title {
+    @include _md {
+        display: none;
     }
 }

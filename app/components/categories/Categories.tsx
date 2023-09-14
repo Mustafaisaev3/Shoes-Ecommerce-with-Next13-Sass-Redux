@@ -9,10 +9,6 @@ import Tab from '../UI/Tab'
 
 const tabsData = [
     {
-        label: 'Popular',
-        value: 'popular',
-    },
-    {
         label: 'Men',
         value: 'men',
     },
@@ -24,6 +20,10 @@ const tabsData = [
         label: 'Kids',
         value: 'kids',
     },
+    {
+        label: 'Slippers',
+        value: 'slippers',
+    }
 ]
 
 const Categories = () => {

@@ -21,7 +21,7 @@ const Button: React.FC<ButtonProps> = ({ title, onClick, size = 'md', width, hei
   return (
     <button className={`btn ${className} ${size}`} style={{width, height}} onClick={onClick} type={type} disabled={disabled}>
         {LeftIcon && <LeftIcon size={18} />}
-        {title && title}
+        {title && <span className='btn-title'>{title}</span>}
         {Icon && <Icon size={18} />}
         {RightIcon && <RightIcon size={18} />}
     </button>

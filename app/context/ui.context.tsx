@@ -24,6 +24,7 @@ export interface State {
   displayModal: boolean;
   displayConfirmationModal: boolean;
   displayCart: boolean;
+  displayMobileMenu: boolean;
   displaySearch: boolean;
   modalView: string;
   productImgZoom: string;
@@ -42,6 +43,7 @@ const initialState = {
   displayModal: false,
   displayConfirmationModal: false,
   displayCart: false,
+  displayMobileMenu: false,
   displaySearch: false,
   modalView: ModalViewTypes.REGISTER_VIEW,
   productImgZoom: "PRODUCT_IMG_ZOOM_VIEW",
@@ -76,6 +78,12 @@ type Action =
     }
   | {
       type: "CLOSE_DRAWER";
+    }
+  | {
+      type: "OPEN_MOBILE_MENU";
+    }
+  | {
+      type: "CLOSE_MOBILE_MENU";
     }
   | {
       type: "OPEN_SEARCH";
@@ -257,6 +265,18 @@ function uiReducer(state: State, action: Action) {
         displayDrawer: false,
       };
     }
+    case "OPEN_MOBILE_MENU": {
+      return {
+        ...state,
+        displayMobileMenu: true,
+      };
+    }
+    case "CLOSE_MOBILE_MENU": {
+      return {
+        ...state,
+        displayMobileMenu: false,
+      };
+    }
     case "SET_MODAL_VIEW": {
       return {
         ...state,
@@ -324,6 +344,9 @@ export const UIProvider: React.FC<PropsWithChildren> = (props) => {
   const openDrawer = () => dispatch({ type: "OPEN_DRAWER" });
   const closeDrawer = () => dispatch({ type: "CLOSE_DRAWER" });
 
+  const openMobileMenu = () => dispatch({ type: "OPEN_MOBILE_MENU" });
+  const closeMobileMenu = () => dispatch({ type: "CLOSE_MOBILE_MENU" });
+
   const openModal = () => dispatch({ type: "OPEN_MODAL" });
   const closeModal = () => dispatch({ type: "CLOSE_MODAL" });
   const openProductImgZoomModal = () => dispatch({ type: "OPEN_PRODUCT_IMG_ZOOM_MODAL" });
@@ -367,6 +390,8 @@ export const UIProvider: React.FC<PropsWithChildren> = (props) => {
       closeConfirmationModal,
       openDrawer,
       closeDrawer,
+      openMobileMenu,
+      closeMobileMenu,
       openProductImgZoomModal,
       closeProductImgZoomModal,
       openSearch,

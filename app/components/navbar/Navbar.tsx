@@ -23,7 +23,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
                     <Menu />
                 </div>
                 <div className='navbar__inner-right'>
-                    <Search />
+                    {/* <Search /> */}
                     <NavUserInfo currentUser={currentUser} />
                     {/* <UserMenu currentUser={currentUser} /> */}
                 </div>

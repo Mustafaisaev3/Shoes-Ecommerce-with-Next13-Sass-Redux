@@ -4,7 +4,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import qs from 'query-string';
 import MenuItem from './MenuItem'
 
-const MenuListData = [
+export const MenuListData = [
   {
     label: 'Mens',
     category: 'men'

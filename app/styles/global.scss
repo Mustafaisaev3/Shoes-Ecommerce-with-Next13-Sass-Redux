@@ -1,6 +1,6 @@
 @import 'abstracts/functions',
-        'abstracts/mixins',
-        'abstracts/variables';
+        'abstracts/variables',
+        'abstracts/mixins';
 
 @import 'base/animations',
         'base/typography',
@@ -34,6 +34,7 @@
         'components/priceRange',
         'components/modalHeading',
         'components/paymentCard',
+        'components/mobileMenu',
 
 
         // Drawer Views
