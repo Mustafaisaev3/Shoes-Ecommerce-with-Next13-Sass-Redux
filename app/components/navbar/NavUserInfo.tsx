@@ -37,8 +37,8 @@ const NavUserInfo: React.FC<NavUserInfoProps> = ({ currentUser }) => {
 
   return (
     <div className="navbar__user-info">
-        <Button rightIcon={BiSearch} className='btn__secondary user-btn' onClick={openSearch} />
-        <div style={{position: 'relative'}}>
+        <Button rightIcon={BiSearch} className='btn__secondary user-info__search' onClick={openSearch} />
+        <div className="navbar__cart-btn">
           <Button title="Cart" rightIcon={HiOutlineShoppingBag} className='btn__secondary' onClick={handleCartClick} />
           <BadgeComp text={totalItems} />
         </div>

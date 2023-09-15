@@ -17,6 +17,15 @@
             align-items: center;
             gap: $gap-15;
         }
+
+        &-actions {
+            display: none;
+            gap: $gap-15;
+
+            @include _lg {
+                display: flex;
+            }
+        }
     }
 
     &__user-info {
@@ -25,5 +34,22 @@
         display: flex;
         align-items: center;
         gap: $gap-15;
+
+        .user-info__search {
+            @include _lg {
+                display: none;
+            }
+        }
+    }
+
+    &__cart-btn {
+        position: relative;
+
+        & .btn-title {
+            @include _lg {
+                display: none;
+            }
+        }
     }
 }
+

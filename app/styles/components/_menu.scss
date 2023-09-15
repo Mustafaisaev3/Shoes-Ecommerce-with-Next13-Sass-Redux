@@ -19,4 +19,8 @@
         }
     }
 
+    @include _lg {
+        display: none;
+    }
+
 }

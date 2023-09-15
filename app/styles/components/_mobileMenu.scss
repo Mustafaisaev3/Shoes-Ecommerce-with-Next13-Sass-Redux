@@ -55,3 +55,10 @@
         }
     }
 }
+
+.menu-btn {
+    display: none;
+    @include _lg {
+        display: block;
+    }
+}

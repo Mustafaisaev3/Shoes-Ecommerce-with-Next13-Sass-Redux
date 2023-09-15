@@ -51,7 +51,6 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                 ) : (
                     <Button title="Login" rightIcon={BiUser} className='btn__secondary user-btn' />
                 )}
-                {/* <Button rightIcon={BiMenu} className='btn__secondary user-btn' onClick={openMobileMenu} /> */}
             </div>
         </div>
         {isOpen ? (
