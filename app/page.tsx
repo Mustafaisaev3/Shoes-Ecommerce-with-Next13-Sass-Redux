@@ -19,12 +19,15 @@ export default async function Home() {
   return (
     <>
       <Hero />
+      {/* @ts-ignore */}
       <Categories products={popularProducts}/>
       <Discount />
+      {/* @ts-ignore */}
       <SaleProsuctsSlider currentUser={currentUser} saleProducts={saleProducts} />
       <NewsMarqueeSlider />
       <DoubleBanner />
       <SaleBanner />
+      {/* @ts-ignore */}
       <PopularProsuctsSlider currentUser={currentUser} popularProducts={popularProducts} />
     </>
   )

@@ -19,6 +19,7 @@ const page = async ({ params }: { params: IParams }) => {
     <div className='product-page'>
         <div className="container">
             <div className="product-page__inner">
+              {/* @ts-ignore */}
                 <ProductSingleDetails currentUser={currentUser} product={product as SafeProduct} relatedProducts={relatedProducts} />
             </div>
         </div>

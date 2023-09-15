@@ -16,6 +16,7 @@ const page = async () => {
         <div className="container">
             <div className="account__inner">
                 {currentUser ? (
+                    // @ts-ignore
                     <AccountClient orders={orders} favoriteProducts={favoriteProducts} />
                 ) : (
                     <div>Not Rgistered</div>

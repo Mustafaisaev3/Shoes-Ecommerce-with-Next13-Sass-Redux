@@ -34,6 +34,7 @@ const ProductSlider: React.FC<ProductSliderInterface> = ({products, currentUser,
           <Heading title={title} spanword={spanword} align={align} link={{link, text: linkTitle}} />
           <div className="product-slider__container">
             <Swiper
+              // @ts-ignore
               modules={[Navigation, Pagination, Scrollbar, A11y]}
               spaceBetween={30}
               slidesPerView={4}
@@ -49,78 +50,6 @@ const ProductSlider: React.FC<ProductSliderInterface> = ({products, currentUser,
                   </SwiperSlide>
                 )
               })}
-              {/* <SwiperSlide>
-                <ProductCard data={{
-                  id: 3,
-                  title: {
-                      first: 'Nike Roshe ',
-                      second: 'Run 2019',
-                  },
-                  description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus maxime consequuntur necessitatibus, ipsum distinctio ad eum corporis tempore totam recusandae consequatur aspernatur blanditiis facere reprehenderit nam consectetur a rerum vitae? Natus maxime consequuntur necessitatibus, ipsum distinctio ad eum corporis tempore totam recusandae consequatur aspernatur blanditiis facere reprehenderit nam consectetur a rerum vitae?',
-                  price: '10,899.99',
-                  img: '/images/HeroSlider/air3.png'
-                }} width={'100%'} />
-              </SwiperSlide>
-              <SwiperSlide>
-                <ProductCard data={{
-                  id: 3,
-                  title: {
-                      first: 'Nike Roshe ',
-                      second: 'Run 2019',
-                  },
-                  description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus maxime consequuntur necessitatibus, ipsum distinctio ad eum corporis tempore totam recusandae consequatur aspernatur blanditiis facere reprehenderit nam consectetur a rerum vitae? Natus maxime consequuntur necessitatibus, ipsum distinctio ad eum corporis tempore totam recusandae consequatur aspernatur blanditiis facere reprehenderit nam consectetur a rerum vitae?',
-                  price: '10,899.99',
-                  img: '/images/HeroSlider/air3.png'
-                }} width={'100%'} />
-              </SwiperSlide>
-              <SwiperSlide>
-                <ProductCard data={{
-                  id: 3,
-                  title: {
-                      first: 'Nike Roshe ',
-                      second: 'Run 2019',
-                  },
-                  description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus maxime consequuntur necessitatibus, ipsum distinctio ad eum corporis tempore totam recusandae consequatur aspernatur blanditiis facere reprehenderit nam consectetur a rerum vitae? Natus maxime consequuntur necessitatibus, ipsum distinctio ad eum corporis tempore totam recusandae consequatur aspernatur blanditiis facere reprehenderit nam consectetur a rerum vitae?',
-                  price: '10,899.99',
-                  img: '/images/HeroSlider/air3.png'
-                }} width={'100%'} />
-              </SwiperSlide>
-              <SwiperSlide>
-                <ProductCard data={{
-                  id: 3,
-                  title: {
-                      first: 'Nike Roshe ',
-                      second: 'Run 2019',
-                  },
-                  description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus maxime consequuntur necessitatibus, ipsum distinctio ad eum corporis tempore totam recusandae consequatur aspernatur blanditiis facere reprehenderit nam consectetur a rerum vitae? Natus maxime consequuntur necessitatibus, ipsum distinctio ad eum corporis tempore totam recusandae consequatur aspernatur blanditiis facere reprehenderit nam consectetur a rerum vitae?',
-                  price: '10,899.99',
-                  img: '/images/HeroSlider/air3.png'
-                }} width={'100%'} />
-              </SwiperSlide>
-              <SwiperSlide>
-                <ProductCard data={{
-                  id: 3,
-                  title: {
-                      first: 'Nike Roshe ',
-                      second: 'Run 2019',
-                  },
-                  description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus maxime consequuntur necessitatibus, ipsum distinctio ad eum corporis tempore totam recusandae consequatur aspernatur blanditiis facere reprehenderit nam consectetur a rerum vitae? Natus maxime consequuntur necessitatibus, ipsum distinctio ad eum corporis tempore totam recusandae consequatur aspernatur blanditiis facere reprehenderit nam consectetur a rerum vitae?',
-                  price: '10,899.99',
-                  img: '/images/HeroSlider/air3.png'
-                }} width={'100%'} />
-              </SwiperSlide>
-              <SwiperSlide>
-                <ProductCard data={{
-                  id: 3,
-                  title: {
-                      first: 'Nike Roshe ',
-                      second: 'Run 2019',
-                  },
-                  description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus maxime consequuntur necessitatibus, ipsum distinctio ad eum corporis tempore totam recusandae consequatur aspernatur blanditiis facere reprehenderit nam consectetur a rerum vitae? Natus maxime consequuntur necessitatibus, ipsum distinctio ad eum corporis tempore totam recusandae consequatur aspernatur blanditiis facere reprehenderit nam consectetur a rerum vitae?',
-                  price: '10,899.99',
-                  img: '/images/HeroSlider/air3.png'
-                }} width={'100%'} />
-              </SwiperSlide> */}
             </Swiper>
           </div>
         </div>

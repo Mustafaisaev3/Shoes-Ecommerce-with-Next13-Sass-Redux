@@ -7,17 +7,6 @@ import { useUI } from '@/app/context/ui.context'
 import HeartButton from '../../HeartButton'
 import { SafeProduct, SafeUser } from '@/app/types'
 
-const images = [
-    'https://img.stadiumgoods.com/jordan-air-jordan-1-retro-high-og-unc-toe_19856413_45845000_2048.jpg',
-    'https://img.stadiumgoods.com/jordan-air-jordan-1-retro-high-og-unc-toe_19856413_45840904_2048.jpg',
-    'https://img.stadiumgoods.com/jordan-air-jordan-1-retro-high-og-unc-toe_19856413_45845003_2048.jpg',
-    'https://img.stadiumgoods.com/jordan-air-jordan-1-retro-high-og-unc-toe_19856413_45845004_2048.jpg',
-    // 'https://img.stadiumgoods.com/adidas-yeezy-yeezy-slide-bone-2022_18909670_45628666_2048.jpg',
-    // 'https://img.stadiumgoods.com/adidas-yeezy-yeezy-slide-bone-2022_18909670_45628661_2048.jpg',
-    // 'https://img.stadiumgoods.com/adidas-yeezy-yeezy-slide-bone-2022_18909670_45631814_2048.jpg',
-    // 'https://img.stadiumgoods.com/adidas-yeezy-yeezy-slide-bone-2022_18909670_45628653_2048.jpg',
-]
-
 type ProductDetailsGalleryTypes = {
   product: SafeProduct,
   currentUser: SafeUser | null
