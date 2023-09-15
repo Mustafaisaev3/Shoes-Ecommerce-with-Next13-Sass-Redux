@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import Discount from "./components/banners/Discount";
 import DoubleBanner from "./components/banners/DoubleBanner";
 import SaleBanner from "./components/banners/SaleBanner";

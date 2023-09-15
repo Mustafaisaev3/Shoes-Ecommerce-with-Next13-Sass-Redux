@@ -6,7 +6,7 @@ import getCurrentUser from '../actions/getCurrentUser'
 import getProducts from '../actions/getProducts'
 
 const CollectionPage = async ({ searchParams }: any) => {
-  const {products, pagination} = await getProducts(searchParams)
+  const { products, pagination } = await getProducts(searchParams)
   const currentUser = await getCurrentUser()
 
   console.log(pagination)
