@@ -3,11 +3,11 @@
 import { useState } from 'react'
 import { FiSearch } from 'react-icons/fi'
 
-interface SearchProps {
-
+interface SearchProps extends React.HTMLAttributes<HTMLInputElement> {
+  placeholder?: string
 }
 
-const Search: React.FC<SearchProps> = () => {
+const Search: React.FC<SearchProps> = ({ placeholder }) => {
   const [searchValue, setSearchValue] = useState('')
 
   const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
@@ -16,10 +16,10 @@ const Search: React.FC<SearchProps> = () => {
 
   return (
     <div className="search">
-        <input type="text" value={searchValue} onChange={handleInput} />
-        <button>
+        <input type="text" placeholder={placeholder} value={searchValue} onChange={handleInput} />
+        {/* <button>
             <FiSearch size={15} />
-        </button>
+        </button> */}
     </div>
   )
 }

@@ -1,0 +1,103 @@
+.search-modal {
+    width: 100vw;
+    height: $full;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.421);
+    z-index: 10;
+
+    &__inner {
+        height: 500px;
+        width: $full;
+        position: relative;
+        background: rgb(255, 255, 255);
+
+        .search-modal__close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+        }
+    }
+}
+
+.search {
+    width: $full;
+    height: $full;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__logo {
+        height: 80px;
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: $gap-20;
+        padding-top: 30px;
+
+        .search__content {
+            padding-top: 30px;
+            width: $full;
+            height: auto;
+
+            .search__empty-container {
+                width: $full;
+                height: auto;
+
+                .search__empty-title{
+                    width: $full;
+                    padding-bottom: 30px;
+                    font-size: $text-lg;
+                    color: rgb(100, 100, 100);
+                }
+
+                .search__categories-list {
+                    width: $full;
+                    height: auto;
+                    display: flex;
+                    flex-direction: column;
+                    gap: $gap-10;
+
+                    & li {
+                        height: 100%;
+                        font-size: $text-lg;
+                        cursor: pointer;
+                        transition: all 0.2s;
+
+                        &:hover{
+                            color: gray;
+                        }
+                    }
+                }
+            }
+        }
+
+        .search__result {
+            width: $full;
+            height: auto;
+
+            .search__result-list {
+                width: $full;
+                height: $full;
+                display: flex;
+                flex-direction: column;
+                gap: $gap-10; 
+
+                .search__result-item {
+                    transition: 0.3s all;
+                    color: $color-main;
+                    cursor: pointer;
+
+                    &:hover {
+                        color: rgb(179, 9, 9);
+                    }
+                }
+            }
+        }
+    }
+}

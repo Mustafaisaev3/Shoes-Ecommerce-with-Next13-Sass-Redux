@@ -2,7 +2,7 @@
 
 import Button from "../UI/Button"
 import { HiOutlineShoppingBag } from 'react-icons/hi'
-import { BiUser } from 'react-icons/bi'
+import { BiUser, BiSearch } from 'react-icons/bi'
 import { useUI } from "@/app/context/ui.context"
 import { ModalViewTypes } from "@/app/context/ui.context"
 import getCurrentUser from "@/app/actions/getCurrentUser"
@@ -23,7 +23,7 @@ interface NavUserInfoProps {
 
 
 const NavUserInfo: React.FC<NavUserInfoProps> = ({ currentUser }) => {
-  const { openDrawer, openModal, setModalView } = useUI()
+  const { openDrawer, openModal, setModalView, openSearch } = useUI()
   const { totalItems } = useCart()
 
   const handleCartClick = () => {
@@ -37,6 +37,7 @@ const NavUserInfo: React.FC<NavUserInfoProps> = ({ currentUser }) => {
 
   return (
     <div className="navbar__user-info">
+        <Button rightIcon={BiSearch} className='btn__secondary user-btn' onClick={openSearch} />
         <div style={{position: 'relative'}}>
           <Button title="Cart" rightIcon={HiOutlineShoppingBag} className='btn__secondary' onClick={handleCartClick} />
           <BadgeComp text={totalItems} />

@@ -13,6 +13,7 @@ import getCurrentUser from './actions/getCurrentUser';
 import getProducts from './actions/getProducts';
 import ConfirmationModal from './components/common/confirmationModal/ConfirmationModal';
 import ManagedMobileMenu from './components/common/mobileMenu/managed-mobile-menu';
+import ManagedSearchModal from './components/common/searchModal/managed-search-modal';
 
 const ManagedDrawer = dynamic(
   () => import('@/app/components/common/drawer/managed-drawer'),
@@ -49,6 +50,7 @@ export default async function RootLayout({
           <ManagedModal user={currentUser} />
           <ManagedDrawer />
           <ManagedMobileMenu />
+          <ManagedSearchModal />
           <ConfirmationModal />
           <ToasterProvider />
         </ManagedUIContext>

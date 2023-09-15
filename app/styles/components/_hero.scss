@@ -8,7 +8,7 @@
         width: $full;
         height: 100%;
         display: flex;
-        padding-top: 100px;
+        padding-top: 60px;
 
         &-tabs {
             width: 150px;
@@ -106,10 +106,9 @@
             // top: 0;
             // right: 0;
             width: 100%;
-            height: auto;
-            object-fit: cover;
+            height: $full;
+            object-fit: contain;
             transition: all 1s;
-            // transform: rotate(-30deg) translateX(-150px) translateY(-100px);
         }
     }
 }
