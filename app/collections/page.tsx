@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import CollectionFilters from '@/app/components/collection/CollectionFilters'
 import CollectionTopbar from '@/app/components/collection/CollectionTopbar'
 import Pagination from '@/app/components/Pagination'
