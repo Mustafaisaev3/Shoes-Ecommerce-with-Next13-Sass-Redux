@@ -36,7 +36,9 @@ const SaleBanner = () => {
                     </div>
                     <Button title="Shop Now" className="btn__secondary"/>
                 </div>
-                <img className="sale-banner__img" src="images/SaleBanner/Nike_Sneakers.png" alt="" />
+                <div className="sale-banner__img">
+                    <img src="images/SaleBanner/Nike_Sneakers.png" alt="" />
+                </div>
             </div>
         </div>
     </div>

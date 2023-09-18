@@ -8,6 +8,11 @@
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr;
         gap: $gap-30;
+
+        @include _md {
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1fr;
+        }
     }
 
     &__item {

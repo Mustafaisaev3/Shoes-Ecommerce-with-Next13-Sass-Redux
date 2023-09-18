@@ -1,12 +1,12 @@
 'use client'
 
 import React from 'react'
+import { Product, Slider } from '@prisma/client';
 import Heading from '../UI/Heading'
 import ProductCard from './ProductCard';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
-import { Product, Slider } from '@prisma/client';
 import { SafeUser, SliderWithProducts } from '@/app/types';
 
 import 'swiper/css';
@@ -39,9 +39,28 @@ const ProductSlider: React.FC<ProductSliderInterface> = ({products, currentUser,
               spaceBetween={30}
               slidesPerView={4}
               navigation
-              pagination={{ clickable: true }}
               onSlideChange={() => console.log('slide change')}
               onSwiper={(swiper) => console.log(swiper)}
+              breakpoints={{
+                0: {
+                  slidesPerView: 1,
+                },
+                576: {
+                  slidesPerView: 1,
+                },
+                640: {
+                  slidesPerView: 1,
+                },
+                768: {
+                  slidesPerView: 2,
+                },
+                992: {
+                  slidesPerView: 3,
+                },
+                1279: {
+                  slidesPerView: 4,
+                },
+              }}
             >
               {products.products.map((product: Product) => {
                 return (

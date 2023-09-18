@@ -19,6 +19,10 @@
         &.left {
             flex-direction: row;
         }
+
+        @include _lg {
+            font-size: $text-3xl;
+        }
     }
 
     &__title-wrapper {

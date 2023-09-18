@@ -3,6 +3,16 @@
     // height: 100vh;
     height: 751px;
     padding: 80px 0;
+    position: relative;
+
+    @include _xl {
+        height: 571px
+        // height: calc(571px + 80px * 2)
+    }
+
+    @include _base {
+        height: 400px 
+    }
 
     &__slider {
         width: $full;
@@ -13,6 +23,10 @@
         &-tabs {
             width: 150px;
             height: $full;
+        }
+
+        @include _lg {
+            display: none;
         }
     }
 }
@@ -60,9 +74,16 @@
     // width: 100%;
     position: relative;
 
-    &__text {
+    &__container {
         width: 60%;
         height: $full; 
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: $gap-30;
+    }
+    &__text {
+        width: $full;
         display: flex;
         flex-direction: column;
         gap: $gap-30;
@@ -71,11 +92,19 @@
     &__title {
         font-size: $text-6xl;
         font-weight: 700;
+
+        @include _xl {
+            font-size: $text-5xl;
+        }
     }
 
     &__description {
         font-size: $text-lg;
         color: gray;
+
+        @include _xl {
+            font-size: 14px;
+        }
     }
 
     &__btns {
@@ -109,6 +138,75 @@
             height: $full;
             object-fit: contain;
             transition: all 1s;
+        }
+    }
+}
+
+.hero-mobile__slider {
+    width: $full;
+    height: $full;
+    display: none;
+
+    &-item {
+        border-radius: 10px;
+        position: relative;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.647);
+        
+        &-content {
+            width: 70%;
+            height: $full;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            gap: $gap-15;
+
+            & button {
+                width: 150px;
+            }
+
+            @include _lg {
+                font-size: $text-5xl;
+            }
+            @include _md {
+                font-size: $text-4xl;
+            }
+            @include _base {
+                font-size: $text-2xl;
+            }
+            @include _sm {
+                font-size: $text-xl;
+            }
+        }
+
+        &-img {
+            width: 50%;
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+    }
+
+    @include _lg {
+        display: block;
+    }
+
+    @include _lg {
+        height: calc(571px - 80px * 2)
+    }
+
+    @include _base {
+        height: 400px 
+    }
+
+    &-item {
+        @include _lg {
+            height: calc(571px - 80px * 2)
+        }
+    
+        @include _base {
+            height: calc(400px - 80px * 2)
         }
     }
 }

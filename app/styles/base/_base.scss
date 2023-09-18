@@ -8,6 +8,10 @@
 
 body {
     padding: 0 calc(20px - (100vw - 100%)) 0 0; 
+
+    @include _lg {
+        padding: 0px;
+    }
 }
 
 ul {
@@ -45,6 +49,17 @@ fieldset {
     font-size: $text-2xl;
     font-weight: bold;
     // mb-6 text-lg font-bold md:text-xl xl:text-2xl text-heading xl:mb-8
+}
+
+// Swiper 
+
+.swiper-pagination-bullet {
+    width: 15px !important;
+    height: 15px !important;
+}
+
+.swiper-pagination-bullet-active {
+    background: $bg-dark !important;
 }
 
 

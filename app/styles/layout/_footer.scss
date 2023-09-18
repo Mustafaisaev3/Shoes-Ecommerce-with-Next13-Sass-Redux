@@ -17,6 +17,18 @@
         display: grid;
         grid-template-columns: repeat(15, minmax(0, 1fr));
         grid-template-rows: 1fr;
+
+        @include _lg {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: 1fr 1fr;
+            gap: $gap-30;
+        }
+
+        @include _base {
+            grid-template-columns: repeat(1, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+            gap: $gap-30;
+        }
     }
 
     &__widget {
@@ -27,6 +39,10 @@
             grid-column: span 4 ;
             // background-color: red;
 
+            @include _lg {
+                grid-column: span 1;
+            }
+
             & ul > li {
                 display: flex;
                 flex-direction: column;
@@ -35,16 +51,28 @@
         
         &-info {
             grid-column: span 3;
+
+            @include _lg {
+                grid-column: span 1;
+            }
             // background-color: rgb(34, 255, 0);
         }
         
         &-service {
             grid-column: span 3;
+
+            @include _lg {
+                grid-column: span 1;
+            }
             // background-color: rgb(0, 47, 255);
         }
         
         &-download {
             grid-column: span 5;
+
+            @include _lg {
+                grid-column: span 1;
+            }
 
             p {
                 font-size: $text-base;
@@ -79,7 +107,8 @@
 
     &__bottom {
         width: $full;
-        height: 50px;
+        height: auto;
+        padding: 20px 0px;
         background-color: $bg-dark;
 
         &-inner {
@@ -91,6 +120,15 @@
 
             & > p {
                 color: $color-secondary;
+
+                @include _md {
+                    text-align: center;
+                }
+            }
+
+            @include _md {
+                flex-direction: column;
+                gap: $gap-15;
             }
 
         }

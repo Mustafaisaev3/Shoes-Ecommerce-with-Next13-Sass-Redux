@@ -33,7 +33,7 @@
     &__image {
         width: $full;
         height: $full;
-        object-fit: cover;
+        object-fit: contain;
         // padding: 20px;
     }
 

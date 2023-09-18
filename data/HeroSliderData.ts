@@ -8,7 +8,8 @@ export const HeroSliderData = [
         description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus maxime consequuntur necessitatibus, ipsum distinctio ad eum corporis tempore totam recusandae consequatur aspernatur blanditiis facere reprehenderit nam consectetur a rerum vitae? Natus maxime consequuntur necessitatibus, ipsum distinctio ad eum corporis tempore totam recusandae consequatur aspernatur blanditiis facere reprehenderit nam consectetur a rerum vitae?',
         price: '12,455.48',
         // img: '/images/HeroSlider/shoe1.png'
-        img: '/images/HeroSlider/air1.png'
+        img: '/images/HeroSlider/air1.png',
+        hex: '#ff000099'
     },
     {
         id: 2,
@@ -19,7 +20,8 @@ export const HeroSliderData = [
         description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus maxime consequuntur necessitatibus, ipsum distinctio ad eum corporis tempore totam recusandae consequatur aspernatur blanditiis facere reprehenderit nam consectetur a rerum vitae? Natus maxime consequuntur necessitatibus, ipsum distinctio ad eum corporis tempore totam recusandae consequatur aspernatur blanditiis facere reprehenderit nam consectetur a rerum vitae?',
         price: '14,155.89',
         // img: '/images/HeroSlider/shoe2.png'
-        img: '/images/HeroSlider/air2.png'
+        img: '/images/HeroSlider/air2.png',
+        hex: '#ff95954a'
     },
     {
         id: 3,
@@ -30,6 +32,7 @@ export const HeroSliderData = [
         description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus maxime consequuntur necessitatibus, ipsum distinctio ad eum corporis tempore totam recusandae consequatur aspernatur blanditiis facere reprehenderit nam consectetur a rerum vitae? Natus maxime consequuntur necessitatibus, ipsum distinctio ad eum corporis tempore totam recusandae consequatur aspernatur blanditiis facere reprehenderit nam consectetur a rerum vitae?',
         price: '10,899.99',
         // img: '/images/HeroSlider/shoe3.png'
-        img: '/images/HeroSlider/air3.png'
+        img: '/images/HeroSlider/air3.png',
+        hex: '#a5a5a569'
     },
 ]

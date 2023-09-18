@@ -1,16 +1,22 @@
 .sale-banner {
     width: 100%;
-    height: 500px;
+    height: auto;
     background-color: $bg-dark;
+    padding: 40px 0px;
 
     &__inner {
         width: $full;
         height: $full;
         position: relative;
+        display: flex;
+
+        @include _lg {
+            flex-direction: column;
+        }
     }
 
     &__content {
-        width: 50%;
+        width: 100%;
         height: 100%;
         display: flex;
         flex-direction: column;
@@ -37,6 +43,14 @@
         align-items: center;
         color: white;
         font-size: $text-6xl;
+
+        @include _md {
+            font-size: $text-5xl;
+        }
+
+        &-first {
+            text-align: center;
+        }
     }
 
     &__timer {
@@ -68,13 +82,24 @@
         }
     }
 
+    // &__img {
+    //     position: absolute;
+    //     top: 0;
+    //     bottom: 0;
+    //     right: 0;
+    //     height: 500px;
+    //     z-index: 1;
+    // }
+
     &__img {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        height: 500px;
+        height: auto;
         z-index: 1;
+
+        & > img {
+            width: $full;
+            height: $full;
+            object-fit: contain;
+        }
     }
 }
 
