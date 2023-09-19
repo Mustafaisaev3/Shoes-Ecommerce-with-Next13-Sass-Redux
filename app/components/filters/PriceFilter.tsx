@@ -4,14 +4,14 @@ import PriceRange from "../PriceRange"
 import FilterBlock from "./FilterBlock"
 
 interface PriceFilterProps {
-    getPrice: (value: any) => any
+  values?: [number, number]
+  getPrice: (value: any) => any
 }
 
-const PriceFilter: React.FC<PriceFilterProps> = ({ getPrice }) => {
-
+const PriceFilter: React.FC<PriceFilterProps> = ({ values, getPrice }) => {
   return (
     <FilterBlock title="Price">
-        <PriceRange min={0} max={2000} minDistance={200} getValues={getPrice}/>
+        <PriceRange initialValues={values} min={0} max={2000} minDistance={200} getValues={getPrice}/>
     </FilterBlock>
   )
 }

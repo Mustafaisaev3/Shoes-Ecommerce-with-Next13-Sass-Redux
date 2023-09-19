@@ -6,15 +6,18 @@ import { useDebounce } from '../hooks/useDebounce'
 
 
 interface PriceRangeType {
-    min?: number,
-    max?: number,
-    minDistance?: number,
-    getValues?: (values: number[]) => any
+  initialValues?: [number, number],
+  min?: number,
+  max?: number,
+  minDistance?: number,
+  getValues?: (values: number[]) => any
 }
 
-const PriceRange: React.FC<PriceRangeType> = ({min = 0, max = 1000, minDistance, getValues}) => {
-  const [values, setValues] = useState([min, max])
+const PriceRange: React.FC<PriceRangeType> = ({initialValues, min = 0, max = 1000, minDistance, getValues}) => {
+  const [values, setValues] = useState(initialValues?.length ? initialValues : [min, max])
   const debouncedValue = useDebounce(values, 1000)
+
+  console.log(initialValues)
 
   useEffect(() => {
     if (getValues) {

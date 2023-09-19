@@ -1,0 +1,29 @@
+
+.filter-drawer {
+    width: 100vw;
+    height: $full;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.421);
+    z-index: 10;
+
+    &__inner {
+        width: 350px;
+        height: $full;
+        position: relative;
+        padding: 20px;
+        background: white;
+
+        @include _sm {
+            width: 100%;
+        }
+
+        .filter-drawer__close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+        }
+    }
+}

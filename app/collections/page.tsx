@@ -21,7 +21,7 @@ const CollectionPage = async ({ searchParams }: any) => {
       <div className='container'>
         <div className='collection__inner'>
           <div className='collection__content'>
-            <CollectionFilters />
+            <CollectionFilters className='main' />
             <div style={{width: '100%'}}>
               <CollectionTopbar />
               <ProductGrid currentUser={currentUser} products={products}/>

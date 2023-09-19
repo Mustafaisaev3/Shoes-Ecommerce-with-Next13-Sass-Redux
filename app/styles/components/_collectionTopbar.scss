@@ -4,14 +4,41 @@
     padding: 0px 30px;
     gap: $gap-15;
 
+    &__title {
+        @include _sm {
+            font-size: 18px;
+            font-weight: 600;
+        }
+    }
+
     &__content {
         display: flex;
         justify-content: space-between;
+
+
+        @include _md {
+            flex-direction: column-reverse;
+            gap: $gap-15;
+            align-items: center;
+        }
     }
     
     &__categories {
         display: flex;
         gap: $gap-15;
+    }
+
+    &__actions {
+        display: flex;
+        gap: $gap-15;
+
+        & .filter-btn {
+            display: none;
+
+            @include _lg {
+                display: flex;
+            }
+        }
     }
 
     &__header {
@@ -20,5 +47,6 @@
         font-size: 25px;
         display: flex;
         justify-content: space-between;
+        align-items: baseline;
     }
 }

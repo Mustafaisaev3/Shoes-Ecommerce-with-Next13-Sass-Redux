@@ -1,11 +1,16 @@
 'use client'
 
 import { useCallback, useEffect, useState } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
+import qs from 'query-string';
+import { useUI } from '@/app/context/ui.context'
+
 import Breadcrumb from '../Breadcrumb'
 import Dropdown from '../UI/Dropdown'
 import Tab from '../UI/Tab'
-import { useRouter, useSearchParams } from 'next/navigation'
-import qs from 'query-string';
+import Button from '../UI/Button'
+
+import { TiFilter } from 'react-icons/ti'
 
 const Categories = [
     {
@@ -35,6 +40,8 @@ const options = [
 const CollectionTopbar = () => {
   const router = useRouter()
   const params = useSearchParams()
+
+  const { openFilter } = useUI()
 
   const category = params?.get('category') ? params?.get('category') : null
   
@@ -74,7 +81,7 @@ const CollectionTopbar = () => {
   return (
     <div className='collection-topbar'>
         <div className='collection-topbar__header'>
-            Products Grid
+            <div className='collection-topbar__title'>Products Grid</div>
             <Breadcrumb />
         </div>
         <div className='collection-topbar__content'>
@@ -83,7 +90,10 @@ const CollectionTopbar = () => {
                     return <Tab key={item.label} label={item.label} value={item.value} active={activeCategory === item.value} onClick={() => handleCategorySelect(item.value)} />
                 })}
             </div>
-            <Dropdown options={options} getValue={setPerPage} />
+            <div className='collection-topbar__actions'>
+                <Button title='filters' rightIcon={TiFilter} className='btn__bordered filter-btn' onClick={openFilter} />
+                <Dropdown options={options} getValue={setPerPage} />
+            </div>
         </div>
     </div>
   )

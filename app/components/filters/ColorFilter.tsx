@@ -4,10 +4,11 @@ import RadioBox from "../UI/Radiobox"
 import FilterBlock from "./FilterBlock"
 
 interface ColorFilterProps {
-    getColor: (value: any) => any
+  value?: string | (string | null)[] | null,
+  getColor: (value: any) => any
 }
 
-const ColorFilter: React.FC<ColorFilterProps> = ({ getColor }) => {
+const ColorFilter: React.FC<ColorFilterProps> = ({ value, getColor }) => {
 
   const onColorSelect = (e: any) => {
     getColor(e.target.value)
@@ -15,10 +16,10 @@ const ColorFilter: React.FC<ColorFilterProps> = ({ getColor }) => {
 
   return (
     <FilterBlock title="Color">
-        <RadioBox name="color" label={'Black'} value={'black'} onClick={onColorSelect} />
-        <RadioBox name="color" label={'Blou'} value={'blou'} onClick={onColorSelect} />
-        <RadioBox name="color" label={'Red'} value={'red'} onClick={onColorSelect} />
-        <RadioBox name="color" label={'Orange'} value={'orange'} onClick={onColorSelect} />
+        <RadioBox name="color" label={'Black'} value={'black'} onClick={onColorSelect} checked={ value==='black' } className='hello'/>
+        <RadioBox name="color" label={'Blou'} value={'blou'} onClick={onColorSelect} checked={ value==='blou' } />
+        <RadioBox name="color" label={'Red'} value={'red'} onClick={onColorSelect} checked={ value==='red' } />
+        <RadioBox name="color" label={'Orange'} value={'orange'} onClick={onColorSelect} checked={ value==='orange' } />
     </FilterBlock>
   )
 }

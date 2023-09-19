@@ -1,7 +1,7 @@
 'use client'
 
 import { useRouter, useSearchParams } from "next/navigation"
-import { useEffect, useState } from "react"
+import { useEffect, useLayoutEffect, useState } from "react"
 import qs from 'query-string';
 import CategoryFilter from "../filters/CategoryFilter"
 import ColorFilter from "../filters/ColorFilter"
@@ -11,33 +11,47 @@ import SizeFilter from "../filters/SizeFilter"
 
 interface FiltersInterface {
     // category: string[],
-    size: string | null,
-    color: string | null,
-    price: number[]
+    size: string | null | (string | null)[],
+    color: string | null | (string | null)[],
+    price: [number, number] | number[]
 }
 
-const CollectionFilters: React.FC = () => {
+const CollectionFilters: React.FC<any> = ({ className }) => {
   const router = useRouter()
   const params = useSearchParams()
+  let currentParams 
+
+  if (params) {
+    currentParams = qs.parse(params.toString())
+  }
   
   const [filters, setFilters] = useState<FiltersInterface>({
-    size: null,
-    price: [],
-    color: null
+    size: currentParams?.size || null,
+    price: [parseInt(currentParams?.minPrice as string), parseInt(currentParams?.maxPrice as string)] || [0, 1000],
+    color: currentParams?.color || null
   })
 
-  // const getCategory = (value: string) => {
-  //   if (filters.category.includes(value)) {
-  //       const filteredCategoryArr = filters.category.filter((item: string) => {
-  //         return item !== value
-  //       })
+  // useLayoutEffect(() => {
+  //   if (params) {
+  //     let currentParams = qs.parse(params.toString())
+  
+  //     if (currentParams.color) {
+  //       setFilters(prev => ({...prev, color: currentParams.color}))
+  //     }
 
-  //       setFilters(prev => ({...prev, category: [...filteredCategoryArr]}))
-  //   } else {
-  //       setFilters(prev => ({...prev, category: [...prev.category, value]}))
+  //     if (currentParams.size) {
+  //       setFilters(prev => ({...prev, size: currentParams.size}))
+  //     }
+
+  //     if (currentParams.minPrice && currentParams.maxPrice) {
+  //       const min = parseInt(currentParams.minPrice as string)
+  //       const max = parseInt(currentParams.maxPrice as string)
+  //       setFilters(prev => ({...prev, price: [min, max]}))
+  //     }
   //   }
-    
-  // }
+
+  //   console.log(filters)
+  // }, [])
 
   const getSize = (value: any) => {
     if (filters.size === value) {
@@ -50,7 +64,7 @@ const CollectionFilters: React.FC = () => {
     if (filters.price === value) {
       return
     }
-    setFilters(prev => ({...prev, price: value}))
+    setFilters(prev => ({...prev, price: [...value]}))
   }
 
   const getColor = (value: any) => {
@@ -64,7 +78,7 @@ const CollectionFilters: React.FC = () => {
     let currentQuery = {}
 
     if (params) {
-        currentQuery = qs.parse(params.toString())
+      currentQuery = qs.parse(params.toString())
     }
 
     const updatedQuery: any = {
@@ -92,13 +106,13 @@ const CollectionFilters: React.FC = () => {
   }
 
   return (
-    <div className='collection-filters'>
+    <div className={`collection-filters ${className}`}>
         <div className="collection-filters__header">
           Filters
         </div>
-        <ColorFilter getColor={getColor}/>
-        <SizeFilter getSize={getSize} />
-        <PriceFilter getPrice={getPrice} />
+        <ColorFilter value={filters.color} getColor={getColor}/>
+        <SizeFilter value={filters.size} getSize={getSize} />
+        <PriceFilter values={filters.price as [number, number]} getPrice={getPrice} />
         <button className="btn btn-main " onClick={resetFilters}>Reset</button>
     </div>
   )
