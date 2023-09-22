@@ -1,7 +1,6 @@
 'use client'
 
 import { SafeProduct, SafeUser } from '@/app/types'
-import Button from '../../UI/Button';
 import HeartButton from '@/app/components/HeartButton';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
@@ -39,10 +38,6 @@ const ProductGallerySlider: React.FC<ProductGallerySliderTypes> = ({ product, cu
           return (
             <SwiperSlide>
               <div className='product-gallary-slider__item' onClick={handleOpenProductImgZoomModal}>
-                {/* <div className='hero-mobile__slider-item-content'>
-                  <h2>{item.title.first} <br/> {item.title.second}</h2>
-                  <Button title="Add to Bag" className="btn-primary" />
-                </div> */}
                 <div className='product-gallary-slider__img'>
                   <img src={item} alt={item} />
                 </div>
