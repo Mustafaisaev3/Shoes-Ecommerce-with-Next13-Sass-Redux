@@ -8,6 +8,10 @@
 
     &__top {
         display: flex;
+
+        @include _lg {
+            flex-direction: column;
+        }
     }
 
     &__left {
@@ -15,10 +19,18 @@
         flex-direction: column;
         padding-right: 30px;
 
+        @include _lg {
+            padding-right: 0px;
+        }
+
         .product-details__description {
             width: $full;
             height: auto;
             padding-bottom: 30px;
+
+            @include _lg {
+                display: none;
+            }
 
             &-title {
                 margin-top: 30px;
@@ -48,6 +60,10 @@
         height: auto;
         padding: 50px 0px;
 
+        @include _lg {
+            display: none;
+        }
+
         .product-details__properties {
             width: $full;
             height: auto;
@@ -58,6 +74,14 @@
                 display: grid;
                 grid-template-columns: repeat(6, 1fr);
                 border: 1px solid $color-main;
+                
+                @include _lg {
+                    grid-template-columns: repeat(3, 1fr);
+
+                    border: none;
+                    border-top: 1px solid $color-main;
+                    border-left: 1px solid $color-main;
+                }
 
                 &-item {
                     width: $full;
@@ -65,6 +89,13 @@
                     padding: 20px;
                     color: $color-main;
                     border-right: 1px solid $color-main;
+
+                    @include _lg {
+                        grid-template-columns: repeat(3, 1fr);
+    
+                        border-right: 1px solid $color-main;
+                        border-bottom: 1px solid $color-main;
+                    }
 
                     & > div {
                         margin-bottom: 0.6rem;
@@ -85,11 +116,48 @@
 
                     &:last-of-type {
                         border: 0px;
+
+                        @include _lg {
+                            border-right: 1px solid $color-main;
+                            border-bottom: 1px solid $color-main;
+                        }
                     }
                 }
 
             }
 
+        }
+    }
+}
+
+.product-details_mobile {
+    display: none;
+
+    @include _lg {
+        display: block;
+        padding-bottom: 30px;
+    }
+
+    .product-details__description {
+        &-title {
+            margin-top: 30px;
+            padding-bottom: 1rem;
+            color: rgb(101, 101, 101);
+            font-weight: 500;
+            font-size: 1.6rem;
+            line-height: 1;
+            letter-spacing: 0.08rem;
+            white-space: nowrap;
+            text-transform: uppercase;
+            text-overflow: ellipsis;
+            border-bottom: 1px solid rgb(239, 239, 239);
+        }
+    
+        &-content {
+            padding-top: 10px;
+            letter-spacing: 0.08rem;
+            color: rgb(101, 101, 101);
+            font-size: $text-lg
         }
     }
 }

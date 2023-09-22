@@ -1,7 +1,16 @@
 .product-details__gallery {
-    min-width: 900px;
+    min-width: 800px;
     height: 600px;
     display: flex;
+
+    @include _xl {
+        min-width: 600px;
+        // width: 400px;
+    }
+
+    @include _lg {
+        display: none;
+    }
 
     & .gallery-slider__wrapper {
         width: 150px;
@@ -9,6 +18,11 @@
         background: $bg-secondary;
         border-radius: $rounded-md;
         padding: 20px;
+
+        @include _xl {
+            width: 130px;
+            padding: 15px;
+        }
 
     }
 
@@ -93,5 +107,10 @@
         position: absolute;
         top: 20px;
         right: 50px;
+
+        @include _xl {
+            top: 0px;
+            right: 0px;
+        }
     }
 }

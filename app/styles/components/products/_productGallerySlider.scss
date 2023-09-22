@@ -1,0 +1,39 @@
+.product-gallary-slider {
+    width: $full;
+    height: auto;
+    position: relative;
+    display: none;
+    @include _lg {
+        display: block;
+    }
+
+    &__item {
+        width: $full;
+        height: 400px;
+    }
+
+    &__img {
+        width: $full;
+        height: $full;
+
+        & > img {
+            width: $full;
+            height: $full;
+            object-fit: contain;
+            cursor: zoom-in;
+        }
+    }
+
+    &__like {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        z-index: 1;
+    }
+
+    .swiper-button-next::after, .swiper-button-prev::after {
+        color: $bg-dark !important;
+        font-size: $text-base !important;
+    }
+    
+}

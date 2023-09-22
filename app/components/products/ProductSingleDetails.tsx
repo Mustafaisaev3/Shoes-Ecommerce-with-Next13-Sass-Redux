@@ -5,6 +5,7 @@ import ProductDetailsGallery from "./gallery/ProductDetailsGallery"
 import ProductOptions from "./options/ProductOptions"
 import { SafeProduct, SafeUser, SliderWithProducts } from "@/app/types"
 import RelatedProductsSlider from "../sliders/RelatedProductsSlider"
+import ProductGallerySlider from "./gallery/ProductGallerySlider"
 
 type ProductSingleDetails = {
     product: SafeProduct | null,
@@ -22,6 +23,7 @@ const ProductSingleDetails: React.FC<ProductSingleDetails> = ({ product, current
                     <div className="product-details__top">
                         <div className="product-details__left">
                             <ProductDetailsGallery currentUser={currentUser} product={product} />
+                            <ProductGallerySlider currentUser={currentUser} product={product} />
                             <div className="product-details__description">
                                 <div className="product-details__description-title">PRODUCT DETAILS</div>
                                 <p className="product-details__description-content">

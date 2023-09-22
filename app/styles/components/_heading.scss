@@ -44,6 +44,10 @@
 
     &__link {
         font-size: $text-base;
+        
+        @include _md {
+            display: none;
+        }
     }
 }
 
